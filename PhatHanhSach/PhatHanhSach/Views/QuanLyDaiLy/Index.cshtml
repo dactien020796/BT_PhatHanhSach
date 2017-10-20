@@ -1,0 +1,56 @@
+﻿@using PhatHanhSach.Models
+@model IEnumerable<DAILY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Thêm đại lý", "ThemDaiLy", "QuanLyDaiLy")
+<br />
+<div>
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <th>Mã đại lý</th>
+            <th>Tên đại lý</th>
+            <th>Địa chỉ</th>
+            <th>SĐT</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (DAILY s in Model)
+        {
+            <tr>
+                <td>@s.MaDL</td>
+                <td>@s.Ten</td>
+                <td>@s.DiaChi</td>
+                <td>@s.SoDT</td>
+                <td>@Html.ActionLink("Sửa", "SuaDaiLy", new { @MaDL = s.MaDL })</td>
+                <td>@Html.ActionLink("Xóa", "XoaDaiLy", new { @MaDL = s.MaDL })</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+
+
+

@@ -15,7 +15,6 @@ namespace PhatHanhSach.Controllers
         public ActionResult Index()
         {
             var list = db.SACHes;
-            var sp = db.SACHes.FirstOrDefault();
             return View(list);
         }
 
@@ -25,7 +24,7 @@ namespace PhatHanhSach.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost]  
         public ActionResult ThemSach(SACH s, HttpPostedFileBase HinhAnh)
         {
             //Kiểm tra tên hình có tồn tại chưa

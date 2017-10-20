@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="10888dd9062d402685480063ecc8e403" Name="Diagram1">
+      <Diagram DiagramId="258ca1ae785242f9b3a89b21908db305" Name="Diagram1">
         <EntityTypeShape EntityType="PhatHanhSachModel.BAOCAODL" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="PhatHanhSachModel.CHUCVU" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PhatHanhSachModel.CONGNO_DL" Width="1.5" PointX="3.75" PointY="19.125" IsExpanded="true" />

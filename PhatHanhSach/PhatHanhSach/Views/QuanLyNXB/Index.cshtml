@@ -1,0 +1,58 @@
+﻿@using PhatHanhSach.Models
+@model IEnumerable<NHAXUATBAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Thêm NXB", "ThemNXB", "QuanLyNXB")
+<br />
+<div>
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <th>Mã NXB</th>
+            <th>Tên NXB</th>
+            <th>Địa chỉ</th>
+            <th>SĐT</th>
+            <th>Số Tài Khoản</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (NHAXUATBAN s in Model)
+        {
+            <tr>
+                <td>@s.MaNXB</td>
+                <td>@s.Ten</td>
+                <td>@s.DiaChi</td>
+                <td>@s.SoDT</td>
+                <td>@s.SoTK</td>
+                <td>@Html.ActionLink("Sửa", "SuaNXB", new { @MaNXB = s.MaNXB })</td>
+                <td>@Html.ActionLink("Xóa", "XoaNXB", new { @MaNXB = s.MaNXB })</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+
+
+
