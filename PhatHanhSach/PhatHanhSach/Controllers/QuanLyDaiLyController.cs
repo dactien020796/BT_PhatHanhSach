@@ -13,7 +13,7 @@ namespace PhatHanhSach.Controllers
         // GET: QuanLyDaiLy
         public ActionResult Index()
         {
-            var list = db.DAILies;
+            var list = db.DAILies.Where(n=>n.TrangThai == true);
             return View(list);
         }
 
@@ -59,6 +59,25 @@ namespace PhatHanhSach.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "QuanLyDaiLy");
+        }
+
+        public ActionResult XoaDaiLy(int MaDL)
+        {
+            if (MaDL == null)
+            {
+                return HttpNotFound();
+            }
+            var dl = db.DAILies.SingleOrDefault(n => n.MaDL == MaDL);
+            if (dl == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                dl.TrangThai = false;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

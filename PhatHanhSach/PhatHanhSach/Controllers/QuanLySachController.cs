@@ -14,7 +14,7 @@ namespace PhatHanhSach.Controllers
         // GET: QuanLySach
         public ActionResult Index()
         {
-            var list = db.SACHes;
+            var list = db.SACHes.Where(n => n.TrangThai == true);
             return View(list);
         }
 
@@ -71,12 +71,8 @@ namespace PhatHanhSach.Controllers
         [HttpPost]
         public ActionResult SuaSach(SACH s, HttpPostedFileBase HinhAnh)
         {
-            if (HinhAnh == null)
-            {
-                s.HinhAnh = ViewBag.HinhAnh;
-            }
             //Kiểm tra tên hình có tồn tại chưa
-            else 
+            if (HinhAnh.ContentLength > 0)
             {
                 //Lấy tên hình ảnh
                 var fileName = Path.GetFileName(HinhAnh.FileName);

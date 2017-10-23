@@ -13,7 +13,7 @@ namespace PhatHanhSach.Controllers
         // GET: QuanLyNXB
         public ActionResult Index()
         {
-            var list = db.NHAXUATBANs;
+            var list = db.NHAXUATBANs.Where(n=>n.TrangThai == true);
             return View(list);
         }
 
@@ -59,6 +59,25 @@ namespace PhatHanhSach.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "QuanLyNXB");
+        }
+
+        public ActionResult XoaNXB(int MaNXB)
+        {
+            if (MaNXB == null)
+            {
+                return HttpNotFound();
+            }
+            var nxb = db.NHAXUATBANs.SingleOrDefault(n => n.MaNXB == MaNXB);
+            if (nxb == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                nxb.TrangThai = false;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
