@@ -14,9 +14,8 @@ namespace PhatHanhSach.Models
     
     public partial class CT_PHIEUNHAP
     {
-        public int IdPN { get; set; }
-        public Nullable<int> MaPN { get; set; }
-        public Nullable<int> MaSach { get; set; }
+        public int MaPN { get; set; }
+        public int MaSach { get; set; }
         public Nullable<int> SLNhap { get; set; }
         public Nullable<int> DonGia { get; set; }
         public Nullable<int> ThanhTien { get; set; }
