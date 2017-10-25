@@ -1,0 +1,62 @@
+﻿@using PhatHanhSach.Models
+@model IEnumerable<PHIEUNHAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Thêm Phiếu Nhập", "NhapSach", "QuanLyPhieuNhap")
+<br />
+<div class="text-center">
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <th>Mã NXB</th>
+            <th>Tên NXB</th>
+            <th>Ngày Nhập</th>
+            <th>Tổng Tiền</th>
+            <th>Trạng Thái</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (PHIEUNHAP s in Model)
+        {
+            <tr>
+                <td>@s.MaNXB</td>
+                <td>@s.NHAXUATBAN.Ten</td>
+                <td>@s.NgayNhap</td>
+                <td>@s.TongTien.Value.ToString("#,##") VNĐ</td>
+                @if (s.TrangThai == false)
+                {
+                    <td>Chưa thanh toán</td>
+                }
+                else
+                {
+                    <td>Đã thanh toán</td>
+                }
+                <td>@Html.ActionLink("Xem Chi Tiết", "XemChiTiet", new { @MaPN = s.MaPN })</td>
+                <td>@Html.ActionLink("Cập Nhật Trạng Thái", "CapNhatTrangThai", new { @MaPN = s.MaPN })</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+

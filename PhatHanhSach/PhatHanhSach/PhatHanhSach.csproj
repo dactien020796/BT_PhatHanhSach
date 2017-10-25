@@ -230,6 +230,7 @@
     <Compile Include="Models\TONKHO.cs">
       <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\CT_PhieuNhapViewModel.cs" />
     <Compile Include="Models\ViewModels\CT_PhieuXuatViewModel.cs" />
     <Compile Include="Models\ViewModels\PhieuXuatViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -351,6 +352,10 @@
     <Content Include="Views\QuanLyDaiLy\SuaDaiLy.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\NhapHang.cshtml" />
     <Content Include="Views\QuanLyPhieuXuat\XuatSach.cshtml" />
+    <Content Include="Views\QuanLyPhieuXuat\Index.cshtml" />
+    <Content Include="Views\QuanLyPhieuXuat\XemChiTiet.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\NhapSach.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,9 +1,9 @@
 ﻿@using PhatHanhSach.Models
 @using PhatHanhSach.Models.ViewModels
-@model DAILY
+@model NHAXUATBAN
 
 @{
-    ViewBag.Title = "XuatSach";
+    ViewBag.Title = "NhapSach";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     int TongTien = 0;
 }
@@ -16,7 +16,7 @@
             $("#TenSach").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '/QuanLyPhieuXuat/Search/',
+                        url: '/QuanLyPhieuNhap/Search/',
                         data: "{ 'prefix': '" + request.term + "'}",
                         dataType: "json",
                         type: "POST",
@@ -55,21 +55,21 @@
 {
     <div class="form-group col-md-12">
         <div class="col-md-2" style="text-align: center">
-            <label class="control-label">Đại lý</label>
+            <label class="control-label">Nhà Xuất Bản</label>
         </div>
         <div class="col-md-4">
 
             @*@Html.DropDownListFor(m => m.MaDL, ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })*@
-            @Html.DropDownList("MaDL", ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })
+            @Html.DropDownList("MaNXB", ViewBag.DS_NXB as SelectList, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group col-md-12">
         <div class="col-md-2" style="text-align: center">
-            <label class="control-label">Ngày xuất</label>
+            <label class="control-label">Ngày nhập</label>
         </div>
         <div class="col-md-4">
-            <input type="text" id="datepicker" name="NgayXuat" class="form-control" />
+            <input type="text" id="datepicker" name="NgayNhap" class="form-control" />
         </div>
     </div>
 
@@ -90,14 +90,14 @@
         <div>
             <label class="control-label col-lg-1">Số Lượng</label>
             <div class="col-lg-3">
-                <input type="text" id="SLXuat" name="SLXuat" class="form-control" />
+                <input type="text" id="SLNhap" name="SLNhap" class="form-control" />
             </div>
         </div>
     </div>
     <div class="text-center" style="float: right">
         <button formmethod="post" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
     </div>
-    
+
     <div style="clear:both">
         <br />
     </div>
@@ -106,20 +106,20 @@
         <tr>
             <th>Mã Sách</th>
             <th>Tên Sách</th>
-            <th>Giá Xuất</th>
+            <th>Giá Nhập</th>
             <th>Số Lượng</th>
             <th>Thành Tiền</th>
             <th></th>
         </tr>
-        @if (Session["DS_Sach"] != null)
+        @if (Session["DS_Sach_Nhap"] != null)
         {
-            foreach (var s in Session["DS_Sach"] as List<CT_PhieuXuatViewModel>)
+            foreach (var s in Session["DS_Sach_Nhap"] as List<CT_PhieuNhapViewModel>)
             {
                 <tr>
                     <td>@s.MaSach</td>
                     <td>@s.TenSach</td>
                     <td>@s.DonGia.ToString("#,##")</td>
-                    <td>@s.SLXuat</td>
+                    <td>@s.SLNhap</td>
                     <td>@s.ThanhTien.ToString("#,##")</td>
                     <td>
                         @Html.ActionLink("Xóa", "XoaChiTiet", new { @MaSach = s.MaSach })
@@ -134,7 +134,7 @@
         <h2 style="float: right">Tổng tiền: @TongTien.ToString("#,##") VNĐ</h2>
         <br />
     }
-    <button formmethod="post" formaction="XuatSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
+    <button formmethod="post" formaction="NhapSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
 }
 
 
