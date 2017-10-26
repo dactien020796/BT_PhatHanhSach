@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PhatHanhSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PhatHanhSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BAOCAODL">
           <Key>
             <PropertyRef Name="MaBCDL" />
@@ -368,6 +368,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="XOASACH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSach" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="PhatHanhSachModelStoreContainer">
           <EntitySet Name="BAOCAODL" EntityType="Self.BAOCAODL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
@@ -450,8 +453,7 @@
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhatHanhSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -931,6 +933,9 @@
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
+          <FunctionImport Name="XOASACH" EntitySet="SACHes" ReturnType="Collection(PhatHanhSachModel.SACH)">
+            <Parameter Name="MaSach" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1108,6 +1113,13 @@
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="PhatHanhSachModel.SACH">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="PhatHanhSachModel.Store.XOASACH">
+                  <ScalarProperty Name="MaSach" ParameterName="MaSach" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TONKHOes">
             <EntityTypeMapping TypeName="PhatHanhSachModel.TONKHO">
@@ -1118,6 +1130,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="XOASACH" FunctionName="PhatHanhSachModel.Store.XOASACH" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

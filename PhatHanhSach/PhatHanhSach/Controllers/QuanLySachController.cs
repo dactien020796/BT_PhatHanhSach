@@ -108,5 +108,32 @@ namespace PhatHanhSach.Controllers
             }
             return RedirectToAction("Index", "QuanLySach");
         }
+
+        //public ActionResult XoaSach2(int MaSach)
+        //{
+        //    if (MaSach == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    var sp = db.SACHes.SingleOrDefault(n => n.MaSach == MaSach);
+        //    if (sp == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    else
+        //    {
+        //        sp.TrangThai = false;
+        //        db.SaveChanges();
+        //    }
+        //    return RedirectToAction("Index");
+        //}
+
+        public ActionResult XoaSach(int maSach)
+        {
+            db.XOASACH(maSach);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }

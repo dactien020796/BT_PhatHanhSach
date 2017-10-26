@@ -12,6 +12,8 @@ namespace PhatHanhSach.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PhatHanhSachEntities : DbContext
     {
@@ -41,5 +43,23 @@ namespace PhatHanhSach.Models
         public virtual DbSet<PHIEUXUAT> PHIEUXUATs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
+    
+        public virtual ObjectResult<SACH> XOASACH(Nullable<int> maSach)
+        {
+            var maSachParameter = maSach.HasValue ?
+                new ObjectParameter("MaSach", maSach) :
+                new ObjectParameter("MaSach", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SACH>("XOASACH", maSachParameter);
+        }
+    
+        public virtual ObjectResult<SACH> XOASACH(Nullable<int> maSach, MergeOption mergeOption)
+        {
+            var maSachParameter = maSach.HasValue ?
+                new ObjectParameter("MaSach", maSach) :
+                new ObjectParameter("MaSach", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SACH>("XOASACH", mergeOption, maSachParameter);
+        }
     }
 }
