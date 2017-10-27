@@ -15,8 +15,9 @@ namespace PhatHanhSach.Models
             {
                 new SqlParameter ("@MaSach", maSach)
             };
-            var id = entities.Database.ExecuteSqlCommand("XOASACH @MaSach", param);
-            Console.WriteLine("UPDATED: " + id);
+            //var id = entities.Database.ExecuteSqlCommand("XOASACH @MaSach", param);
+            //Console.WriteLine("UPDATED: " + id);
+            entities.Database.ExecuteSqlCommand("XOASACH @MaSach", param);
         }
     }
 }

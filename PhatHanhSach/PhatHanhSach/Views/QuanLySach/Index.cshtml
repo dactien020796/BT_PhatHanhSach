@@ -26,7 +26,9 @@
                 <td>@s.TacGia</td>
                 <td><img src="@Url.Content("~/Content/HinhAnhSP/" + s.HinhAnh)" /></td>
                 <td>@Html.ActionLink("Sửa","SuaSach", new { @MaSach = s.MaSach })</td>
-                <td>@Html.ActionLink("Xóa", "XoaSach", new { @MaSach = s.MaSach })</td>
+                @*<td>@Html.ActionLink("Xóa", "XoaSach", new { @MaSach = s.MaSach })</td>*@
+                <td>@Html.ActionLink("Xóa", "XoaSach", new { @MaSach = s.MaSach}, new { onclick = "return confirm('Chắc chắn muốn xóa?');" })</td>
+               
             </tr>
         }
     </table>
