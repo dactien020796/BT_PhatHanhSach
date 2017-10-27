@@ -128,10 +128,9 @@ namespace PhatHanhSach.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        public ActionResult XoaSach(int maSach)
+        public ActionResult XoaSach(int MaSach)
         {
-            db.XOASACH(maSach);
-            db.SaveChanges();
+            Procedure.XOASACH(db, MaSach);
             return RedirectToAction("Index");
         }
 
