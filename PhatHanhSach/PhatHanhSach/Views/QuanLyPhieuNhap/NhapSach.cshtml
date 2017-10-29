@@ -47,6 +47,26 @@
             dateFormat: 'dd-mm-yy',
             changeMonth: true, //Tùy chọn này cho phép người dùng chọn tháng
             changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
+
+        });
+
+        $("#MaNXB").val('@ViewBag.DaiLy');
+        $("#datepicker").datepicker("setDate", '@ViewBag.DatePicker');
+        @*$("#datepicker").val('@ViewBag.DatePicker');*@
+
+        $("#btnLuu").click(function () {
+            if ($('#MaDL').val() == null || $("#datepicker").datepicker("getDate") == null) {
+                alert("Vui lòng chọn đầy đủ thông tin");
+                return false;
+            }
+
+        });
+
+        $("#btnThemChiTiet").click(function () {
+            if ($("#MaSach").val() == "" || $("#DonGia").val() == "" || $("#SLNhap").val() == "") {
+                alert("Vui lòng nhập đầy đủ thông tin sách");
+                return false;
+            }
         });
     })
 </script>
@@ -58,7 +78,6 @@
             <label class="control-label">Nhà Xuất Bản</label>
         </div>
         <div class="col-md-4">
-
             @*@Html.DropDownListFor(m => m.MaDL, ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })*@
             @Html.DropDownList("MaNXB", ViewBag.DS_NXB as SelectList, new { @class = "form-control" })
         </div>
@@ -95,7 +114,7 @@
         </div>
     </div>
     <div class="text-center" style="float: right">
-        <button formmethod="post" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
+        <button id="btnThemChiTiet" formmethod="post" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
     </div>
 
     <div style="clear:both">
@@ -122,7 +141,7 @@
                     <td>@s.SLNhap</td>
                     <td>@s.ThanhTien.ToString("#,##")</td>
                     <td>
-                        @Html.ActionLink("Xóa", "XoaChiTiet", new { @MaSach = s.MaSach })
+                        @Html.ActionLink("Xóa", "XoaChiTiet", new { @MaSach = s.MaSach}, new {@class = "btnXoa" })
                     </td>
                 </tr>
                 TongTien += s.ThanhTien;
@@ -134,7 +153,7 @@
         <h2 style="float: right">Tổng tiền: @TongTien.ToString("#,##") VNĐ</h2>
         <br />
     }
-    <button formmethod="post" formaction="NhapSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
+    <button id="btnLuu" formmethod="post" formaction="NhapSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
 }
 
 

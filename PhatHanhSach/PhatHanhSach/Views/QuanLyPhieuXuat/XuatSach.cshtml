@@ -48,6 +48,24 @@
             changeMonth: true, //Tùy chọn này cho phép người dùng chọn tháng
             changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
         });
+
+        $("#MaDL").val('@ViewBag.DaiLy');
+        $("#datepicker").datepicker("setDate", '@ViewBag.DatePicker');
+
+        $("#btnLuu").click(function () {
+            if ($('#MaDL').val() == null || $("#datepicker").datepicker("getDate") == null) {
+                alert("Vui lòng chọn đầy đủ thông tin");
+                return false;
+            }
+
+        });
+
+        $("#btnThemChiTiet").click(function () {
+            if ($("#MaSach").val() == "" || $("#DonGia").val() == "" || $("#SLXuat").val() == "") {
+                alert("Vui lòng nhập đầy đủ thông tin sách");
+                return false;
+            }
+        });
     })
 </script>
 
@@ -69,7 +87,7 @@
             <label class="control-label">Ngày xuất</label>
         </div>
         <div class="col-md-4">
-            <input type="text" id="datepicker" name="NgayXuat" class="form-control" />
+            <input type="text" id="datepicker" name="NgayXuat" class="form-control" readonly />
         </div>
     </div>
 
@@ -95,7 +113,7 @@
         </div>
     </div>
     <div class="text-center" style="float: right">
-        <button formmethod="post" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
+        <button formmethod="post" id="btnThemChiTiet" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
     </div>
     
     <div style="clear:both">
@@ -134,7 +152,7 @@
         <h2 style="float: right">Tổng tiền: @TongTien.ToString("#,##") VNĐ</h2>
         <br />
     }
-    <button formmethod="post" formaction="XuatSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
+    <button id="btnLuu" formmethod="post" formaction="XuatSach" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
 }
 
 

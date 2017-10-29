@@ -12,7 +12,9 @@ namespace PhatHanhSach.Controllers
     public class QuanLyPhieuXuatController : Controller
     {
         PhatHanhSachEntities db = new PhatHanhSachEntities();
-        
+        public static DateTime date = DateTime.Now;
+        public static String daily;
+
         public ActionResult Index()
         {
             var list = db.PHIEUXUATs;
@@ -93,15 +95,44 @@ namespace PhatHanhSach.Controllers
             ctpx.SLXuat = int.Parse(f["SLXuat"]);
             ctpx.ThanhTien = ctpx.DonGia * ctpx.SLXuat;
             ((List<CT_PhieuXuatViewModel>)Session["DS_Sach"]).Add(ctpx);
-            ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
+            try
+            {
+                LuuBienDungChung(f);
+                LuuViewBag();
+            }
+            catch (Exception)
+            {
+                ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
+            }
             return View("XuatSach");
         }
 
-        public ActionResult XoaChiTiet(int MaSach)
+        public ActionResult XoaChiTiet(int MaSach, FormCollection f)
         {
             ((List<CT_PhieuXuatViewModel>)Session["DS_Sach"]).RemoveAll(p => p.MaSach == MaSach);
-            ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
+            try
+            {
+                LuuViewBag();
+            }
+            catch (Exception)
+            {
+                ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
+            }
             return View("XuatSach");
+        }
+
+        public void LuuBienDungChung(FormCollection f)
+        {
+            String[] temp = f["NgayXuat"].ToString().Split('-');
+            date = new DateTime(int.Parse(temp[2]), int.Parse(temp[1]), int.Parse(temp[0]));
+            daily = f["MaDL"].ToString();
+        }
+
+        public void LuuViewBag()
+        {
+            ViewBag.DatePicker = date.ToString("dd-MM-yyyy");
+            ViewBag.DaiLy = daily;
+            ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
         }
 
         public ActionResult XemChiTiet(int? MaPX)

@@ -1,0 +1,81 @@
+﻿@using PhatHanhSach.Models
+@model IEnumerable<CONGNO_DL>
+
+@{
+    ViewBag.Title = "CongNoDL";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+<script>
+    $(document).ready(function () {
+        $("#datepicker").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true, //Tùy chọn này cho phép người dùng chọn tháng
+            changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
+        });
+
+        $("#btn_datecongnodl").click(function () {
+            if ($("#datepicker").datepicker("getDate") == null) {
+                alert("Vui lòng chọn ngày tháng");
+                return false;
+            }
+        });
+    })
+</script>
+<h1> Công nợ đại lý ngày @ViewBag.NgayCongNo </h1>
+<form class="form-horizontal" action="@Url.Action("CongNoDL","QuanLyCongNo_DL")" method="POST">
+    <div class="row">
+        <div class="form-group">
+            <label for="text1" class="control-label col-lg-4" style="padding-top:0"> Chọn ngày:</label>
+            <div class="col-lg-3">
+                <input type="text" id="datepicker" class="form-control" name="datepicker" readonly/>
+            </div>
+
+            <div class="col-lg-1">
+                <input type="submit" id="btn_datecongnodl" class="btn btn-metis-5" value="Lọc" style="margin:0" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Table -->
+<table class="table table-bordered text-center">
+    <tr>
+        <th>Tên Đại Lý</th>
+        <th>Tiền Nợ</th>
+    </tr>
+    @foreach (CONGNO_DL item in Model)
+    {
+        if (item != null)
+        {
+            <tr>
+                <td>@item.DAILY.Ten</td>
+                <td>@item.TienNo.Value.ToString("#,##") VNĐ</td>
+            </tr>
+        }
+    }
+</table>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+

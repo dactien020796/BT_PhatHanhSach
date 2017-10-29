@@ -159,6 +159,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\QuanLyCongNo_DLController.cs" />
+    <Compile Include="Controllers\QuanLyCongNo_NXBController.cs" />
     <Compile Include="Controllers\QuanLyDaiLyController.cs" />
     <Compile Include="Controllers\QuanLyNXBController.cs" />
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
@@ -168,68 +170,68 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BAOCAODL.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CHUCVU.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CONGNO_DL.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CONGNO_NXB.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CT_BAOCAODL.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CT_DOANHSO.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CT_PHIEUNHAP.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CT_PHIEUXUAT.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DAILY.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DOANHSO.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NGUOIDUNG.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHAXUATBAN.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PhatHanhSach.Context.cs">
+    <Compile Include="Models\PhatHanhSachModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhatHanhSach.Context.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PhatHanhSach.cs">
+    <Compile Include="Models\PhatHanhSachModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PhatHanhSach.Designer.cs">
+    <Compile Include="Models\PhatHanhSachModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhatHanhSach.edmx</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUNHAP.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHIEUXUAT.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Procedure.cs" />
     <Compile Include="Models\SACH.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TONKHO.cs">
-      <DependentUpon>PhatHanhSach.tt</DependentUpon>
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\CT_PhieuNhapViewModel.cs" />
     <Compile Include="Models\ViewModels\CT_PhieuXuatViewModel.cs" />
@@ -290,15 +292,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\PhatHanhSach.Context.tt">
+    <Content Include="Models\PhatHanhSachModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhatHanhSach.edmx</DependentUpon>
-      <LastGenOutput>PhatHanhSach.Context.cs</LastGenOutput>
+      <DependentUpon>PhatHanhSachModel.edmx</DependentUpon>
+      <LastGenOutput>PhatHanhSachModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PhatHanhSach.tt">
+    <Content Include="Models\PhatHanhSachModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhatHanhSach.edmx</DependentUpon>
-      <LastGenOutput>PhatHanhSach.cs</LastGenOutput>
+      <DependentUpon>PhatHanhSachModel.edmx</DependentUpon>
+      <LastGenOutput>PhatHanhSachModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -307,12 +309,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\PhatHanhSach.edmx">
+    <EntityDeploy Include="Models\PhatHanhSachModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PhatHanhSach.Designer.cs</LastGenOutput>
+      <LastGenOutput>PhatHanhSachModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\PhatHanhSach.edmx.diagram">
-      <DependentUpon>PhatHanhSach.edmx</DependentUpon>
+    <Content Include="Models\PhatHanhSachModel.edmx.diagram">
+      <DependentUpon>PhatHanhSachModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -357,6 +359,10 @@
     <Content Include="Views\QuanLyPhieuXuat\XemChiTiet.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\NhapSach.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\Index.cshtml" />
+    <Content Include="Views\QuanLyCongNo_DL\Index.cshtml" />
+    <Content Include="Views\QuanLyCongNo_DL\CongNoDL.cshtml" />
+    <Content Include="Views\QuanLyCongNo_NXB\Index.cshtml" />
+    <Content Include="Views\QuanLyCongNo_NXB\CongNoNXB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

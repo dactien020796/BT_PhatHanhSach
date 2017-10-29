@@ -11,6 +11,8 @@ namespace PhatHanhSach.Controllers
     public class QuanLyPhieuNhapController : Controller
     {
         PhatHanhSachEntities db = new PhatHanhSachEntities();
+        public static DateTime date = DateTime.Now;
+        public static String nxb;
 
         public ActionResult Index()
         {
@@ -90,15 +92,46 @@ namespace PhatHanhSach.Controllers
             ctpx.SLNhap = int.Parse(f["SLNhap"]);
             ctpx.ThanhTien = ctpx.DonGia * ctpx.SLNhap;
             ((List<CT_PhieuNhapViewModel>)Session["DS_Sach_Nhap"]).Add(ctpx);
-            ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
+            try
+            {
+                LuuBienDungChung(f);
+                LuuViewBag();
+            }
+            catch (Exception)
+            {
+                ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
+            }
             return View("NhapSach");
         }
 
-        public ActionResult XoaChiTiet(int MaSach)
+        public ActionResult XoaChiTiet(int MaSach, FormCollection f)
         {
             ((List<CT_PhieuNhapViewModel>)Session["DS_Sach_Nhap"]).RemoveAll(p => p.MaSach == MaSach);
-            ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
+            try
+            {
+                LuuViewBag();
+            }
+            catch (Exception)
+            {
+                ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
+            }
             return View("NhapSach");
+        }
+
+        //Lưu biến ngày nhập và mã NXB dùng chung cho các action
+        public void LuuBienDungChung(FormCollection f)
+        {
+            String[] temp = f["NgayNhap"].ToString().Split('-');
+            date = new DateTime(int.Parse(temp[2]), int.Parse(temp[1]), int.Parse(temp[0]));
+            nxb = f["MaNXB"].ToString();
+        }
+
+        //Lưu các giá trị vào viewbag để gửi qua view
+        public void LuuViewBag()
+        {
+            ViewBag.DatePicker = date.ToString("dd-MM-yyyy");           
+            ViewBag.DaiLy = nxb;
+            ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
         }
 
         public ActionResult XemChiTiet(int? MaPN)
