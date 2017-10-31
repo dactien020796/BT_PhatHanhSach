@@ -40,6 +40,5 @@ namespace PhatHanhSach.Models
         public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
         public virtual DbSet<PHIEUXUAT> PHIEUXUATs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
-        public virtual DbSet<TONKHO> TONKHOes { get; set; }
     }
 }

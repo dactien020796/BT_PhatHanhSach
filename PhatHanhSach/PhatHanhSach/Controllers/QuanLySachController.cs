@@ -131,7 +131,6 @@ namespace PhatHanhSach.Controllers
         public ActionResult XoaSach(int MaSach)
         {
             Procedure.XOASACH(db, MaSach);
-            ModelState.AddModelError("", "Xóa thành công");
             return RedirectToAction("Index");
         }
 

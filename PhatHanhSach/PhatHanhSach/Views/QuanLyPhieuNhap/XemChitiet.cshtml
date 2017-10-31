@@ -1,27 +1,27 @@
 ﻿@using PhatHanhSach.Models
-@model PHIEUXUAT
+@model PHIEUNHAP
 @{
-    ViewBag.Title = "XemChiTiet";
+    ViewBag.Title = "XemChitiet";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    List<CT_PHIEUXUAT> list = ViewBag.DS_CTPhieuXuat as List<CT_PHIEUXUAT>;
+    List<CT_PHIEUNHAP> list = ViewBag.DS_CTPhieuNhap as List<CT_PHIEUNHAP>;
 }
 
 <div class="form-group col-md-12">
     <div class="col-md-2" style="text-align: center">
-        <label class="control-label">Đại lý</label>
+        <label class="control-label">Nhà xuất bản</label>
     </div>
     <div class="col-md-4">
         @*@Html.DropDownListFor(m => m.MaDL, ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })*@
-        <input type="text" value="@Model.DAILY.Ten" class="form-control" disabled="disabled"/>
+        <input type="text" value="@Model.NHAXUATBAN.Ten" class="form-control" disabled="disabled"/>
     </div>
 </div>
 
 <div class="form-group col-md-12">
     <div class="col-md-2" style="text-align: center">
-        <label class="control-label">Ngày xuất</label>
+        <label class="control-label">Ngày nhập</label>
     </div>
     <div class="col-md-4">
-        <input type="text" value="@Model.NgayXuat" class="form-control" disabled="disabled"/>
+        <input type="text" value="@Model.NgayNhap" class="form-control" disabled="disabled" />
     </div>
 </div>
 
@@ -33,17 +33,17 @@
     <tr>
         <th>Mã Sách</th>
         <th>Tên Sách</th>
-        <th>Giá xuất</th>
+        <th>Giá nhập</th>
         <th>Số Lượng</th>
         <th>Thành Tiền</th>
     </tr>
-    @foreach (CT_PHIEUXUAT s in ViewBag.DS_CTPhieuXuat as IEnumerable<CT_PHIEUXUAT>)
+    @foreach (CT_PHIEUNHAP s in ViewBag.DS_CTPhieuNhap as IEnumerable<CT_PHIEUNHAP>)
     {
         <tr>
             <td>@s.MaSach</td>
             <td>@s.SACH.TenSach</td>
             <td>@s.DonGia.Value.ToString("#,##")</td>
-            <td>@s.SLXuat</td>
+            <td>@s.SLNhap</td>
             <td>@s.ThanhTien.Value.ToString("#,##")</td>
         </tr>
     }
@@ -60,16 +60,16 @@
         font-size: 20px;
     }
 
-    table img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 130px;
-        height: 200px;
-    }
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
 
-    table th {
-        text-align: center;
-    }
+        table th {
+            text-align: center;
+        }
 </style>
 
