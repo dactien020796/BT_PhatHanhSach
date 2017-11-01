@@ -172,9 +172,10 @@
             <PropertyRef Name="MaSach" />
             <PropertyRef Name="ThoiGian" />
           </Key>
-          <Property Name="MaSach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSach" Type="int" Nullable="false" />
           <Property Name="ThoiGian" Type="datetime" Nullable="false" />
           <Property Name="SLTon" Type="int" />
+          <Property Name="TangGiam" Type="int" />
         </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__239E4DCF">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
@@ -356,7 +357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MaSach__30F848ED">
+        <Association Name="FK__TONKHO__MaSach__787EE5A0">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -445,7 +446,7 @@
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaSach__30F848ED" Association="Self.FK__TONKHO__MaSach__30F848ED">
+          <AssociationSet Name="FK__TONKHO__MaSach__787EE5A0" Association="Self.FK__TONKHO__MaSach__787EE5A0">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
@@ -646,17 +647,18 @@
           <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHS__MaSac__2E1BDC42" FromRole="SACH" ToRole="CT_DOANHSO" />
           <NavigationProperty Name="CT_PHIEUNHAP" Relationship="Self.FK__CT_PHIEUN__MaSac__5DCAEF64" FromRole="SACH" ToRole="CT_PHIEUNHAP" />
           <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUX__MaSac__20C1E124" FromRole="SACH" ToRole="CT_PHIEUXUAT" />
-          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSach__30F848ED" FromRole="SACH" ToRole="TONKHO" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSach__787EE5A0" FromRole="SACH" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
             <PropertyRef Name="MaSach" />
             <PropertyRef Name="ThoiGian" />
           </Key>
-          <Property Name="MaSach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSach" Type="Int32" Nullable="false" />
           <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SLTon" Type="Int32" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__30F848ED" FromRole="TONKHO" ToRole="SACH" />
+          <Property Name="TangGiam" Type="Int32" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__787EE5A0" FromRole="TONKHO" ToRole="SACH" />
         </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__239E4DCF">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
@@ -838,7 +840,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MaSach__30F848ED">
+        <Association Name="FK__TONKHO__MaSach__787EE5A0">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -927,7 +929,7 @@
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MaSach__30F848ED" Association="Self.FK__TONKHO__MaSach__30F848ED">
+          <AssociationSet Name="FK__TONKHO__MaSach__787EE5A0" Association="Self.FK__TONKHO__MaSach__787EE5A0">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
@@ -1115,6 +1117,7 @@
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
                 <ScalarProperty Name="SLTon" ColumnName="SLTon" />
+                <ScalarProperty Name="TangGiam" ColumnName="TangGiam" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

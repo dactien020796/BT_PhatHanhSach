@@ -17,6 +17,7 @@ namespace PhatHanhSach.Models
         public int MaSach { get; set; }
         public System.DateTime ThoiGian { get; set; }
         public Nullable<int> SLTon { get; set; }
+        public Nullable<int> TangGiam { get; set; }
     
         public virtual SACH SACH { get; set; }
     }

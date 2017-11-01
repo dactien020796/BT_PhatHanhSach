@@ -55,7 +55,7 @@
         @*$("#datepicker").val('@ViewBag.DatePicker');*@
 
         $("#btnLuu").click(function () {
-            if ($('#MaDL').val() == null || $("#datepicker").datepicker("getDate") == null) {
+            if ($('#MaNXB').val() == "" || $("#datepicker").datepicker("getDate") == null) {
                 alert("Vui lòng chọn đầy đủ thông tin");
                 return false;
             }
