@@ -166,6 +166,7 @@
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLyPhieuXuatController.cs" />
     <Compile Include="Controllers\QuanLySachController.cs" />
+    <Compile Include="Controllers\TonKhoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -361,6 +362,8 @@
     <Content Include="Views\QuanLyCongNo_NXB\Index.cshtml" />
     <Content Include="Views\QuanLyCongNo_NXB\CongNoNXB.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\XemChitiet.cshtml" />
+    <Content Include="Views\TonKho\Index.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
