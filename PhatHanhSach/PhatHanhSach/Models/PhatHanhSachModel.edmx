@@ -168,13 +168,17 @@
           <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TONKHO">
-          <Property Name="MaSach" Type="int" />
-          <Property Name="ThoiGian" Type="datetime" />
+          <Key>
+            <PropertyRef Name="MaSach" />
+            <PropertyRef Name="ThoiGian" />
+          </Key>
+          <Property Name="MaSach" Type="int" Nullable="false" />
+          <Property Name="ThoiGian" Type="datetime" Nullable="false" />
           <Property Name="SLTon" Type="int" />
           <Property Name="TangGiam" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__36B12243">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="*" />
@@ -355,9 +359,18 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__TONKHO__MaSach__282DF8C2" />-->
+        <Association Name="FK__TONKHO__MaSach__503BEA1C">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MaSach" />
+            </Principal>
+            <Dependent Role="TONKHO">
+              <PropertyRef Name="MaSach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PhatHanhSachModelStoreContainer">
           <EntitySet Name="BAOCAODL" EntityType="Self.BAOCAODL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
@@ -374,6 +387,14 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUXUAT" EntityType="Self.PHIEUXUAT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TONKHO" EntityType="Self.TONKHO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TONKHO].[MaSach] AS [MaSach], 
+    [TONKHO].[ThoiGian] AS [ThoiGian], 
+    [TONKHO].[SLTon] AS [SLTon], 
+    [TONKHO].[TangGiam] AS [TangGiam]
+    FROM [dbo].[TONKHO] AS [TONKHO]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="BAOCAODL" EntitySet="BAOCAODL" />
@@ -433,6 +454,10 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <AssociationSet Name="FK__PHIEUXUAT__MaDL__300424B4" Association="Self.FK__PHIEUXUAT__MaDL__300424B4">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TONKHO__MaSach__503BEA1C" Association="Self.FK__TONKHO__MaSach__503BEA1C">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -631,6 +656,18 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHS__MaSac__412EB0B6" FromRole="SACH" ToRole="CT_DOANHSO" />
           <NavigationProperty Name="CT_PHIEUNHAP" Relationship="Self.FK__CT_PHIEUN__MaSac__5DCAEF64" FromRole="SACH" ToRole="CT_PHIEUNHAP" />
           <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUX__MaSac__33D4B598" FromRole="SACH" ToRole="CT_PHIEUXUAT" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSach__503BEA1C" FromRole="SACH" ToRole="TONKHO" />
+        </EntityType>
+        <EntityType Name="TONKHO">
+          <Key>
+            <PropertyRef Name="MaSach" />
+            <PropertyRef Name="ThoiGian" />
+          </Key>
+          <Property Name="MaSach" Type="Int32" Nullable="false" />
+          <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SLTon" Type="Int32" />
+          <Property Name="TangGiam" Type="Int32" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__503BEA1C" FromRole="TONKHO" ToRole="SACH" />
         </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__36B12243">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
@@ -812,6 +849,18 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__TONKHO__MaSach__503BEA1C">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MaSach" />
+            </Principal>
+            <Dependent Role="TONKHO">
+              <PropertyRef Name="MaSach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PhatHanhSachEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BAOCAODLs" EntityType="Self.BAOCAODL" />
           <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
@@ -828,6 +877,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
           <EntitySet Name="PHIEUXUATs" EntityType="Self.PHIEUXUAT" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
           <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
             <End Role="DAILY" EntitySet="DAILies" />
             <End Role="BAOCAODL" EntitySet="BAOCAODLs" />
@@ -887,6 +937,10 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <AssociationSet Name="FK__PHIEUNHAP__MaNXB__29572725" Association="Self.FK__PHIEUNHAP__MaNXB__29572725">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TONKHO__MaSach__503BEA1C" Association="Self.FK__TONKHO__MaSach__503BEA1C">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1063,6 +1117,16 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TONKHOes">
+            <EntityTypeMapping TypeName="PhatHanhSachModel.TONKHO">
+              <MappingFragment StoreEntitySet="TONKHO">
+                <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="SLTon" ColumnName="SLTon" />
+                <ScalarProperty Name="TangGiam" ColumnName="TangGiam" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
