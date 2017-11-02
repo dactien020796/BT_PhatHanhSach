@@ -108,6 +108,11 @@
           <Property Name="ThanhToan" Type="int" />
           <Property Name="TrangThai" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'PhatHanhSach.dbo.example' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="example">
+          <Property Name="ex_id" Type="nchar" MaxLength="10" />
+        </EntityType>-->
         <EntityType Name="NGUOIDUNG">
           <Key>
             <PropertyRef Name="MaND" />
@@ -167,28 +172,17 @@
           <Property Name="HinhAnh" Type="varchar" MaxLength="50" />
           <Property Name="TrangThai" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="TONKHO">
-<<<<<<< HEAD
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaSach" Type="int" />
           <Property Name="ThoiGian" Type="datetime" />
           <Property Name="SLTon" Type="int" />
           <Property Name="TangGiam" Type="int" />
-        </EntityType>-->
-        <Association Name="FK__BAOCAODL__MaDL__36B12243">
-=======
-          <Key>
-            <PropertyRef Name="MaSach" />
-            <PropertyRef Name="ThoiGian" />
-          </Key>
-          <Property Name="MaSach" Type="int" Nullable="false" />
-          <Property Name="ThoiGian" Type="datetime" Nullable="false" />
-          <Property Name="SLTon" Type="int" />
-          <Property Name="TangGiam" Type="int" />
         </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__239E4DCF">
->>>>>>> dac-tien
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,7 +194,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO_DL__MaDL__49C3F6B7">
+        <Association Name="FK__CONGNO_DL__MaDL__36B12243">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="CONGNO_DL" Type="Self.CONGNO_DL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,7 +206,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO_NX__MaNXB__46E78A0C">
+        <Association Name="FK__CONGNO_NX__MaNXB__33D4B598">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="1" />
           <End Role="CONGNO_NXB" Type="Self.CONGNO_NXB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,7 +218,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaBCD__398D8EEE">
+        <Association Name="FK__CT_BAOCAO__MaBCD__267ABA7A">
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,7 +230,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaSac__3A81B327">
+        <Association Name="FK__CT_BAOCAO__MaSac__276EDEB3">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -248,7 +242,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_DOANHS__MaSac__412EB0B6">
+        <Association Name="FK__CT_DOANHS__MaSac__2E1BDC42">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_DOANHSO" Type="Self.CT_DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -260,7 +254,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_DOANHSO__MaDS__403A8C7D">
+        <Association Name="FK__CT_DOANHSO__MaDS__2D27B809">
           <End Role="DOANHSO" Type="Self.DOANHSO" Multiplicity="1" />
           <End Role="CT_DOANHSO" Type="Self.CT_DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,7 +290,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_PHIEUX__MaSac__33D4B598">
+        <Association Name="FK__CT_PHIEUX__MaSac__20C1E124">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_PHIEUXUAT" Type="Self.CT_PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +302,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_PHIEUXU__MaPX__32E0915F">
+        <Association Name="FK__CT_PHIEUXU__MaPX__1FCDBCEB">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CT_PHIEUXUAT" Type="Self.CT_PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,7 +314,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DOANHSO__MaNXB__3D5E1FD2">
+        <Association Name="FK__DOANHSO__MaNXB__2A4B4B5E">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="0..1" />
           <End Role="DOANHSO" Type="Self.DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -332,7 +326,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NGUOIDUNG__MaCV__4E88ABD4">
+        <Association Name="FK__NGUOIDUNG__MaCV__3E52440B">
           <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
           <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,7 +338,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNXB__29572725">
+        <Association Name="FK__PHIEUNHAP__MaNXB__164452B1">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="0..1" />
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,7 +350,7 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUXUAT__MaDL__300424B4">
+        <Association Name="FK__PHIEUXUAT__MaDL__1CF15040">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -368,13 +362,8 @@ warning 6013: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-<<<<<<< HEAD
-        <!--Errors Found During Generation:
-error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__TONKHO__MaSach__282DF8C2" />-->
-=======
-        <Association Name="FK__TONKHO__MaSach__787EE5A0">
-          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+        <Association Name="FK__TONKHO__MaSach__7A672E12">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SACH">
@@ -385,7 +374,6 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
->>>>>>> dac-tien
         <EntityContainer Name="PhatHanhSachModelStoreContainer">
           <EntitySet Name="BAOCAODL" EntityType="Self.BAOCAODL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
@@ -402,31 +390,32 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUXUAT" EntityType="Self.PHIEUXUAT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
+          <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__BAOCAODL__MaDL__239E4DCF" Association="Self.FK__BAOCAODL__MaDL__239E4DCF">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="BAOCAODL" EntitySet="BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO_DL__MaDL__49C3F6B7" Association="Self.FK__CONGNO_DL__MaDL__49C3F6B7">
+          <AssociationSet Name="FK__CONGNO_DL__MaDL__36B12243" Association="Self.FK__CONGNO_DL__MaDL__36B12243">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="CONGNO_DL" EntitySet="CONGNO_DL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO_NX__MaNXB__46E78A0C" Association="Self.FK__CONGNO_NX__MaNXB__46E78A0C">
+          <AssociationSet Name="FK__CONGNO_NX__MaNXB__33D4B598" Association="Self.FK__CONGNO_NX__MaNXB__33D4B598">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
             <End Role="CONGNO_NXB" EntitySet="CONGNO_NXB" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__398D8EEE" Association="Self.FK__CT_BAOCAO__MaBCD__398D8EEE">
+          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__267ABA7A" Association="Self.FK__CT_BAOCAO__MaBCD__267ABA7A">
             <End Role="BAOCAODL" EntitySet="BAOCAODL" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaSac__3A81B327" Association="Self.FK__CT_BAOCAO__MaSac__3A81B327">
+          <AssociationSet Name="FK__CT_BAOCAO__MaSac__276EDEB3" Association="Self.FK__CT_BAOCAO__MaSac__276EDEB3">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_DOANHS__MaSac__412EB0B6" Association="Self.FK__CT_DOANHS__MaSac__412EB0B6">
+          <AssociationSet Name="FK__CT_DOANHS__MaSac__2E1BDC42" Association="Self.FK__CT_DOANHS__MaSac__2E1BDC42">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CT_DOANHSO" EntitySet="CT_DOANHSO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_DOANHSO__MaDS__403A8C7D" Association="Self.FK__CT_DOANHSO__MaDS__403A8C7D">
+          <AssociationSet Name="FK__CT_DOANHSO__MaDS__2D27B809" Association="Self.FK__CT_DOANHSO__MaDS__2D27B809">
             <End Role="DOANHSO" EntitySet="DOANHSO" />
             <End Role="CT_DOANHSO" EntitySet="CT_DOANHSO" />
           </AssociationSet>
@@ -438,37 +427,34 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
             <End Role="CT_PHIEUNHAP" EntitySet="CT_PHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_PHIEUX__MaSac__33D4B598" Association="Self.FK__CT_PHIEUX__MaSac__33D4B598">
+          <AssociationSet Name="FK__CT_PHIEUX__MaSac__20C1E124" Association="Self.FK__CT_PHIEUX__MaSac__20C1E124">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CT_PHIEUXUAT" EntitySet="CT_PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_PHIEUXU__MaPX__32E0915F" Association="Self.FK__CT_PHIEUXU__MaPX__32E0915F">
+          <AssociationSet Name="FK__CT_PHIEUXU__MaPX__1FCDBCEB" Association="Self.FK__CT_PHIEUXU__MaPX__1FCDBCEB">
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
             <End Role="CT_PHIEUXUAT" EntitySet="CT_PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__DOANHSO__MaNXB__3D5E1FD2" Association="Self.FK__DOANHSO__MaNXB__3D5E1FD2">
+          <AssociationSet Name="FK__DOANHSO__MaNXB__2A4B4B5E" Association="Self.FK__DOANHSO__MaNXB__2A4B4B5E">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
             <End Role="DOANHSO" EntitySet="DOANHSO" />
           </AssociationSet>
-          <AssociationSet Name="FK__NGUOIDUNG__MaCV__4E88ABD4" Association="Self.FK__NGUOIDUNG__MaCV__4E88ABD4">
+          <AssociationSet Name="FK__NGUOIDUNG__MaCV__3E52440B" Association="Self.FK__NGUOIDUNG__MaCV__3E52440B">
             <End Role="CHUCVU" EntitySet="CHUCVU" />
             <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNXB__29572725" Association="Self.FK__PHIEUNHAP__MaNXB__29572725">
+          <AssociationSet Name="FK__PHIEUNHAP__MaNXB__164452B1" Association="Self.FK__PHIEUNHAP__MaNXB__164452B1">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUXUAT__MaDL__300424B4" Association="Self.FK__PHIEUXUAT__MaDL__300424B4">
+          <AssociationSet Name="FK__PHIEUXUAT__MaDL__1CF15040" Association="Self.FK__PHIEUXUAT__MaDL__1CF15040">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
-          <AssociationSet Name="FK__TONKHO__MaSach__787EE5A0" Association="Self.FK__TONKHO__MaSach__787EE5A0">
+          <AssociationSet Name="FK__TONKHO__MaSach__7A672E12" Association="Self.FK__TONKHO__MaSach__7A672E12">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
->>>>>>> dac-tien
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -484,8 +470,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="ThoiGian" Type="DateTime" Precision="3" />
           <Property Name="ThanhToan" Type="Int32" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__BAOCAODL__MaDL__36B12243" FromRole="BAOCAODL" ToRole="DAILY" />
-          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__398D8EEE" FromRole="BAOCAODL" ToRole="CT_BAOCAODL" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__BAOCAODL__MaDL__239E4DCF" FromRole="BAOCAODL" ToRole="DAILY" />
+          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__267ABA7A" FromRole="BAOCAODL" ToRole="CT_BAOCAODL" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -495,7 +481,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="Ten" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__MaCV__4E88ABD4" FromRole="CHUCVU" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="NGUOIDUNGs" Relationship="Self.FK__NGUOIDUNG__MaCV__3E52440B" FromRole="CHUCVU" ToRole="NGUOIDUNG" />
         </EntityType>
         <EntityType Name="CONGNO_DL">
           <Key>
@@ -506,7 +492,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TienNo" Type="Int32" />
           <Property Name="TienDaTra" Type="Int32" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__CONGNO_DL__MaDL__49C3F6B7" FromRole="CONGNO_DL" ToRole="DAILY" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__CONGNO_DL__MaDL__36B12243" FromRole="CONGNO_DL" ToRole="DAILY" />
         </EntityType>
         <EntityType Name="CONGNO_NXB">
           <Key>
@@ -517,7 +503,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TienNo" Type="Int32" />
           <Property Name="TienDaTra" Type="Int32" />
-          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__CONGNO_NX__MaNXB__46E78A0C" FromRole="CONGNO_NXB" ToRole="NHAXUATBAN" />
+          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__CONGNO_NX__MaNXB__33D4B598" FromRole="CONGNO_NXB" ToRole="NHAXUATBAN" />
         </EntityType>
         <EntityType Name="CT_BAOCAODL">
           <Key>
@@ -529,8 +515,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="SoLuongBan" Type="Int32" />
           <Property Name="DonGiaBan" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__398D8EEE" FromRole="CT_BAOCAODL" ToRole="BAOCAODL" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_BAOCAO__MaSac__3A81B327" FromRole="CT_BAOCAODL" ToRole="SACH" />
+          <NavigationProperty Name="BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__267ABA7A" FromRole="CT_BAOCAODL" ToRole="BAOCAODL" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_BAOCAO__MaSac__276EDEB3" FromRole="CT_BAOCAODL" ToRole="SACH" />
         </EntityType>
         <EntityType Name="CT_DOANHSO">
           <Key>
@@ -542,8 +528,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="SoLuongBan" Type="Int32" />
           <Property Name="DonGiaNhap" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_DOANHS__MaSac__412EB0B6" FromRole="CT_DOANHSO" ToRole="SACH" />
-          <NavigationProperty Name="DOANHSO" Relationship="Self.FK__CT_DOANHSO__MaDS__403A8C7D" FromRole="CT_DOANHSO" ToRole="DOANHSO" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_DOANHS__MaSac__2E1BDC42" FromRole="CT_DOANHSO" ToRole="SACH" />
+          <NavigationProperty Name="DOANHSO" Relationship="Self.FK__CT_DOANHSO__MaDS__2D27B809" FromRole="CT_DOANHSO" ToRole="DOANHSO" />
         </EntityType>
         <EntityType Name="CT_PHIEUNHAP">
           <Key>
@@ -568,8 +554,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="SLXuat" Type="Int32" />
           <Property Name="DonGia" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_PHIEUX__MaSac__33D4B598" FromRole="CT_PHIEUXUAT" ToRole="SACH" />
-          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CT_PHIEUXU__MaPX__32E0915F" FromRole="CT_PHIEUXUAT" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_PHIEUX__MaSac__20C1E124" FromRole="CT_PHIEUXUAT" ToRole="SACH" />
+          <NavigationProperty Name="PHIEUXUAT" Relationship="Self.FK__CT_PHIEUXU__MaPX__1FCDBCEB" FromRole="CT_PHIEUXUAT" ToRole="PHIEUXUAT" />
         </EntityType>
         <EntityType Name="DAILY">
           <Key>
@@ -580,9 +566,9 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="BAOCAODLs" Relationship="Self.FK__BAOCAODL__MaDL__36B12243" FromRole="DAILY" ToRole="BAOCAODL" />
-          <NavigationProperty Name="CONGNO_DL" Relationship="Self.FK__CONGNO_DL__MaDL__49C3F6B7" FromRole="DAILY" ToRole="CONGNO_DL" />
-          <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FK__PHIEUXUAT__MaDL__300424B4" FromRole="DAILY" ToRole="PHIEUXUAT" />
+          <NavigationProperty Name="BAOCAODLs" Relationship="Self.FK__BAOCAODL__MaDL__239E4DCF" FromRole="DAILY" ToRole="BAOCAODL" />
+          <NavigationProperty Name="CONGNO_DL" Relationship="Self.FK__CONGNO_DL__MaDL__36B12243" FromRole="DAILY" ToRole="CONGNO_DL" />
+          <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FK__PHIEUXUAT__MaDL__1CF15040" FromRole="DAILY" ToRole="PHIEUXUAT" />
         </EntityType>
         <EntityType Name="DOANHSO">
           <Key>
@@ -593,8 +579,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="ThoiGian" Type="DateTime" Precision="3" />
           <Property Name="ThanhToan" Type="Int32" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHSO__MaDS__403A8C7D" FromRole="DOANHSO" ToRole="CT_DOANHSO" />
-          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__DOANHSO__MaNXB__3D5E1FD2" FromRole="DOANHSO" ToRole="NHAXUATBAN" />
+          <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHSO__MaDS__2D27B809" FromRole="DOANHSO" ToRole="CT_DOANHSO" />
+          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__DOANHSO__MaNXB__2A4B4B5E" FromRole="DOANHSO" ToRole="NHAXUATBAN" />
         </EntityType>
         <EntityType Name="NGUOIDUNG">
           <Key>
@@ -607,7 +593,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="SoDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="MaCV" Type="Int32" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CHUCVU" Relationship="Self.FK__NGUOIDUNG__MaCV__4E88ABD4" FromRole="NGUOIDUNG" ToRole="CHUCVU" />
+          <NavigationProperty Name="CHUCVU" Relationship="Self.FK__NGUOIDUNG__MaCV__3E52440B" FromRole="NGUOIDUNG" ToRole="CHUCVU" />
         </EntityType>
         <EntityType Name="NHAXUATBAN">
           <Key>
@@ -619,9 +605,9 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="SoDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="SoTK" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CONGNO_NXB" Relationship="Self.FK__CONGNO_NX__MaNXB__46E78A0C" FromRole="NHAXUATBAN" ToRole="CONGNO_NXB" />
-          <NavigationProperty Name="DOANHSOes" Relationship="Self.FK__DOANHSO__MaNXB__3D5E1FD2" FromRole="NHAXUATBAN" ToRole="DOANHSO" />
-          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MaNXB__29572725" FromRole="NHAXUATBAN" ToRole="PHIEUNHAP" />
+          <NavigationProperty Name="CONGNO_NXB" Relationship="Self.FK__CONGNO_NX__MaNXB__33D4B598" FromRole="NHAXUATBAN" ToRole="CONGNO_NXB" />
+          <NavigationProperty Name="DOANHSOes" Relationship="Self.FK__DOANHSO__MaNXB__2A4B4B5E" FromRole="NHAXUATBAN" ToRole="DOANHSO" />
+          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MaNXB__164452B1" FromRole="NHAXUATBAN" ToRole="PHIEUNHAP" />
         </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
@@ -634,7 +620,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="TongTien" Type="Int32" />
           <Property Name="TrangThai" Type="Boolean" />
           <NavigationProperty Name="CT_PHIEUNHAP" Relationship="Self.FK__CT_PHIEUNH__MaPN__5CD6CB2B" FromRole="PHIEUNHAP" ToRole="CT_PHIEUNHAP" />
-          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__PHIEUNHAP__MaNXB__29572725" FromRole="PHIEUNHAP" ToRole="NHAXUATBAN" />
+          <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FK__PHIEUNHAP__MaNXB__164452B1" FromRole="PHIEUNHAP" ToRole="NHAXUATBAN" />
         </EntityType>
         <EntityType Name="PHIEUXUAT">
           <Key>
@@ -646,8 +632,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="MaDL" Type="Int32" />
           <Property Name="TongTien" Type="Int32" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUXU__MaPX__32E0915F" FromRole="PHIEUXUAT" ToRole="CT_PHIEUXUAT" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__PHIEUXUAT__MaDL__300424B4" FromRole="PHIEUXUAT" ToRole="DAILY" />
+          <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUXU__MaPX__1FCDBCEB" FromRole="PHIEUXUAT" ToRole="CT_PHIEUXUAT" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__PHIEUXUAT__MaDL__1CF15040" FromRole="PHIEUXUAT" ToRole="DAILY" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -662,30 +648,24 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaSac__3A81B327" FromRole="SACH" ToRole="CT_BAOCAODL" />
-          <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHS__MaSac__412EB0B6" FromRole="SACH" ToRole="CT_DOANHSO" />
+          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaSac__276EDEB3" FromRole="SACH" ToRole="CT_BAOCAODL" />
+          <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHS__MaSac__2E1BDC42" FromRole="SACH" ToRole="CT_DOANHSO" />
           <NavigationProperty Name="CT_PHIEUNHAP" Relationship="Self.FK__CT_PHIEUN__MaSac__5DCAEF64" FromRole="SACH" ToRole="CT_PHIEUNHAP" />
-<<<<<<< HEAD
-          <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUX__MaSac__33D4B598" FromRole="SACH" ToRole="CT_PHIEUXUAT" />
-        </EntityType>
-        <Association Name="FK__BAOCAODL__MaDL__36B12243">
-=======
           <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUX__MaSac__20C1E124" FromRole="SACH" ToRole="CT_PHIEUXUAT" />
-          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSach__787EE5A0" FromRole="SACH" ToRole="TONKHO" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MaSach__7A672E12" FromRole="SACH" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
-            <PropertyRef Name="MaSach" />
-            <PropertyRef Name="ThoiGian" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="MaSach" Type="Int32" Nullable="false" />
-          <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSach" Type="Int32" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
           <Property Name="SLTon" Type="Int32" />
           <Property Name="TangGiam" Type="Int32" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__787EE5A0" FromRole="TONKHO" ToRole="SACH" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__7A672E12" FromRole="TONKHO" ToRole="SACH" />
         </EntityType>
         <Association Name="FK__BAOCAODL__MaDL__239E4DCF">
->>>>>>> dac-tien
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -697,7 +677,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaBCD__398D8EEE">
+        <Association Name="FK__CT_BAOCAO__MaBCD__267ABA7A">
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -709,7 +689,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NGUOIDUNG__MaCV__4E88ABD4">
+        <Association Name="FK__NGUOIDUNG__MaCV__3E52440B">
           <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="0..1" />
           <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="*" />
           <ReferentialConstraint>
@@ -721,7 +701,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO_DL__MaDL__49C3F6B7">
+        <Association Name="FK__CONGNO_DL__MaDL__36B12243">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="1" />
           <End Role="CONGNO_DL" Type="Self.CONGNO_DL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -733,7 +713,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CONGNO_NX__MaNXB__46E78A0C">
+        <Association Name="FK__CONGNO_NX__MaNXB__33D4B598">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="1" />
           <End Role="CONGNO_NXB" Type="Self.CONGNO_NXB" Multiplicity="*" />
           <ReferentialConstraint>
@@ -745,7 +725,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaSac__3A81B327">
+        <Association Name="FK__CT_BAOCAO__MaSac__276EDEB3">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -757,7 +737,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_DOANHS__MaSac__412EB0B6">
+        <Association Name="FK__CT_DOANHS__MaSac__2E1BDC42">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_DOANHSO" Type="Self.CT_DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -769,7 +749,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_DOANHSO__MaDS__403A8C7D">
+        <Association Name="FK__CT_DOANHSO__MaDS__2D27B809">
           <End Role="DOANHSO" Type="Self.DOANHSO" Multiplicity="1" />
           <End Role="CT_DOANHSO" Type="Self.CT_DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -805,7 +785,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_PHIEUX__MaSac__33D4B598">
+        <Association Name="FK__CT_PHIEUX__MaSac__20C1E124">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_PHIEUXUAT" Type="Self.CT_PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -817,7 +797,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_PHIEUXU__MaPX__32E0915F">
+        <Association Name="FK__CT_PHIEUXU__MaPX__1FCDBCEB">
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
           <End Role="CT_PHIEUXUAT" Type="Self.CT_PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -829,7 +809,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUXUAT__MaDL__300424B4">
+        <Association Name="FK__PHIEUXUAT__MaDL__1CF15040">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -841,7 +821,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DOANHSO__MaNXB__3D5E1FD2">
+        <Association Name="FK__DOANHSO__MaNXB__2A4B4B5E">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="0..1" />
           <End Role="DOANHSO" Type="Self.DOANHSO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -853,7 +833,7 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PHIEUNHAP__MaNXB__29572725">
+        <Association Name="FK__PHIEUNHAP__MaNXB__164452B1">
           <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="0..1" />
           <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
           <ReferentialConstraint>
@@ -865,10 +845,8 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
-<<<<<<< HEAD
-=======
-        <Association Name="FK__TONKHO__MaSach__787EE5A0">
-          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+        <Association Name="FK__TONKHO__MaSach__7A672E12">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SACH">
@@ -879,7 +857,6 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             </Dependent>
           </ReferentialConstraint>
         </Association>
->>>>>>> dac-tien
         <EntityContainer Name="PhatHanhSachEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BAOCAODLs" EntityType="Self.BAOCAODL" />
           <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
@@ -896,35 +873,36 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
           <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
           <EntitySet Name="PHIEUXUATs" EntityType="Self.PHIEUXUAT" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
-          <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
+          <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
+          <AssociationSet Name="FK__BAOCAODL__MaDL__239E4DCF" Association="Self.FK__BAOCAODL__MaDL__239E4DCF">
             <End Role="DAILY" EntitySet="DAILies" />
             <End Role="BAOCAODL" EntitySet="BAOCAODLs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__398D8EEE" Association="Self.FK__CT_BAOCAO__MaBCD__398D8EEE">
+          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__267ABA7A" Association="Self.FK__CT_BAOCAO__MaBCD__267ABA7A">
             <End Role="BAOCAODL" EntitySet="BAOCAODLs" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__NGUOIDUNG__MaCV__4E88ABD4" Association="Self.FK__NGUOIDUNG__MaCV__4E88ABD4">
+          <AssociationSet Name="FK__NGUOIDUNG__MaCV__3E52440B" Association="Self.FK__NGUOIDUNG__MaCV__3E52440B">
             <End Role="CHUCVU" EntitySet="CHUCVUs" />
             <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO_DL__MaDL__49C3F6B7" Association="Self.FK__CONGNO_DL__MaDL__49C3F6B7">
+          <AssociationSet Name="FK__CONGNO_DL__MaDL__36B12243" Association="Self.FK__CONGNO_DL__MaDL__36B12243">
             <End Role="DAILY" EntitySet="DAILies" />
             <End Role="CONGNO_DL" EntitySet="CONGNO_DL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CONGNO_NX__MaNXB__46E78A0C" Association="Self.FK__CONGNO_NX__MaNXB__46E78A0C">
+          <AssociationSet Name="FK__CONGNO_NX__MaNXB__33D4B598" Association="Self.FK__CONGNO_NX__MaNXB__33D4B598">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="CONGNO_NXB" EntitySet="CONGNO_NXB" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaSac__3A81B327" Association="Self.FK__CT_BAOCAO__MaSac__3A81B327">
+          <AssociationSet Name="FK__CT_BAOCAO__MaSac__276EDEB3" Association="Self.FK__CT_BAOCAO__MaSac__276EDEB3">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_DOANHS__MaSac__412EB0B6" Association="Self.FK__CT_DOANHS__MaSac__412EB0B6">
+          <AssociationSet Name="FK__CT_DOANHS__MaSac__2E1BDC42" Association="Self.FK__CT_DOANHS__MaSac__2E1BDC42">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="CT_DOANHSO" EntitySet="CT_DOANHSO" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_DOANHSO__MaDS__403A8C7D" Association="Self.FK__CT_DOANHSO__MaDS__403A8C7D">
+          <AssociationSet Name="FK__CT_DOANHSO__MaDS__2D27B809" Association="Self.FK__CT_DOANHSO__MaDS__2D27B809">
             <End Role="DOANHSO" EntitySet="DOANHSOes" />
             <End Role="CT_DOANHSO" EntitySet="CT_DOANHSO" />
           </AssociationSet>
@@ -936,33 +914,30 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
             <End Role="CT_PHIEUNHAP" EntitySet="CT_PHIEUNHAP" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_PHIEUX__MaSac__33D4B598" Association="Self.FK__CT_PHIEUX__MaSac__33D4B598">
+          <AssociationSet Name="FK__CT_PHIEUX__MaSac__20C1E124" Association="Self.FK__CT_PHIEUX__MaSac__20C1E124">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="CT_PHIEUXUAT" EntitySet="CT_PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_PHIEUXU__MaPX__32E0915F" Association="Self.FK__CT_PHIEUXU__MaPX__32E0915F">
+          <AssociationSet Name="FK__CT_PHIEUXU__MaPX__1FCDBCEB" Association="Self.FK__CT_PHIEUXU__MaPX__1FCDBCEB">
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
             <End Role="CT_PHIEUXUAT" EntitySet="CT_PHIEUXUAT" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUXUAT__MaDL__300424B4" Association="Self.FK__PHIEUXUAT__MaDL__300424B4">
+          <AssociationSet Name="FK__PHIEUXUAT__MaDL__1CF15040" Association="Self.FK__PHIEUXUAT__MaDL__1CF15040">
             <End Role="DAILY" EntitySet="DAILies" />
             <End Role="PHIEUXUAT" EntitySet="PHIEUXUATs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DOANHSO__MaNXB__3D5E1FD2" Association="Self.FK__DOANHSO__MaNXB__3D5E1FD2">
+          <AssociationSet Name="FK__DOANHSO__MaNXB__2A4B4B5E" Association="Self.FK__DOANHSO__MaNXB__2A4B4B5E">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="DOANHSO" EntitySet="DOANHSOes" />
           </AssociationSet>
-          <AssociationSet Name="FK__PHIEUNHAP__MaNXB__29572725" Association="Self.FK__PHIEUNHAP__MaNXB__29572725">
+          <AssociationSet Name="FK__PHIEUNHAP__MaNXB__164452B1" Association="Self.FK__PHIEUNHAP__MaNXB__164452B1">
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
-          <AssociationSet Name="FK__TONKHO__MaSach__787EE5A0" Association="Self.FK__TONKHO__MaSach__787EE5A0">
+          <AssociationSet Name="FK__TONKHO__MaSach__7A672E12" Association="Self.FK__TONKHO__MaSach__7A672E12">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
->>>>>>> dac-tien
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1141,11 +1116,10 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-<<<<<<< HEAD
-=======
           <EntitySetMapping Name="TONKHOes">
             <EntityTypeMapping TypeName="PhatHanhSachModel.TONKHO">
               <MappingFragment StoreEntitySet="TONKHO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
                 <ScalarProperty Name="SLTon" ColumnName="SLTon" />
@@ -1153,7 +1127,6 @@ error 6004: The table 'PhatHanhSach.dbo.TONKHO' is referenced by a relationship,
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
->>>>>>> dac-tien
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
