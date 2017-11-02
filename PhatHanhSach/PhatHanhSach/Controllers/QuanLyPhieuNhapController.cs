@@ -76,7 +76,8 @@ namespace PhatHanhSach.Controllers
                         select new
                         {
                             label = s.TenSach,
-                            val = s.MaSach
+                            val = s.MaSach,
+                            gianhap = s.DonGiaNhap
                         }).ToList();
             return Json(sach);
         }

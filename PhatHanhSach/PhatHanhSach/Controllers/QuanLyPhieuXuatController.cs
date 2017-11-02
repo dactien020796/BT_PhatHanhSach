@@ -78,7 +78,8 @@ namespace PhatHanhSach.Controllers
                         select new
                         {
                             label = s.TenSach,
-                            val = s.MaSach
+                            val = s.MaSach, 
+                            giaxuat = s.DonGiaXuat
                         }).ToList();
 
             return Json(sach);
@@ -87,6 +88,11 @@ namespace PhatHanhSach.Controllers
         [HttpPost]
         public ActionResult ThemChiTiet(SACH sach, FormCollection f)
         {
+            //Kiểm tra SL sách xuất có <= SL sách trong kho không
+            if (KiemTraSoLuongTon(sach, f) == false)
+            {
+                return Content("<script>alert('SL sách trong kho không đáp ứng đủ SL yêu cầu'); window.location.href = '/QuanLyPhieuXuat/XuatSach'</script>");
+            }
             SACH s = db.SACHes.SingleOrDefault(n => n.MaSach == sach.MaSach);
             CT_PhieuXuatViewModel ctpx = new CT_PhieuXuatViewModel();
             ctpx.MaSach = s.MaSach;
@@ -105,6 +111,17 @@ namespace PhatHanhSach.Controllers
                 ViewBag.DS_DaiLy = new SelectList(db.DAILies.Where(n => n.TrangThai == true).ToList(), "MaDL", "Ten");
             }
             return View("XuatSach");
+        }
+
+        public Boolean KiemTraSoLuongTon(SACH s, FormCollection f)
+        {
+            TONKHO tk = db.TONKHOes.Where(n => n.MaSach == s.MaSach && n.ThoiGian <= date && n.SLTon != 0 && n.TangGiam != 0).OrderByDescending(n => n.ThoiGian).FirstOrDefault();
+            int sl = int.Parse(f["SLXuat"].ToString());
+            if (sl > tk.SLTon)
+            {
+                return false;
+            }
+            return true;
         }
 
         public ActionResult XoaChiTiet(int MaSach, FormCollection f)

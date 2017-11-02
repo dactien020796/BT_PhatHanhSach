@@ -36,6 +36,7 @@
                 },
                 select: function (e, i) {
                     $("#MaSach").val(i.item.val);
+                    $("#DonGia").val(i.item.gianhap);
                 },
                 minLength: 1
             });
@@ -103,7 +104,7 @@
         <div>
             <label class="control-label col-lg-1">Đơn Giá</label>
             <div class="col-lg-3">
-                <input type="text" id="DonGia" name="DonGia" class="form-control" />
+                <input type="text" id="DonGia" name="DonGia" class="form-control" readonly/>
             </div>
         </div>
         <div>
