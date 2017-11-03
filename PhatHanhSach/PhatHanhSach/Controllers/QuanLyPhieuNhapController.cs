@@ -131,15 +131,15 @@ namespace PhatHanhSach.Controllers
         public void LuuViewBag()
         {
             ViewBag.DatePicker = date.ToString("dd-MM-yyyy");           
-            ViewBag.DaiLy = nxb;
+            ViewBag.NhaXuatBan = nxb;
             ViewBag.DS_NXB = new SelectList(db.NHAXUATBANs.Where(n => n.TrangThai == true).ToList(), "MaNXB", "Ten");
         }
 
         public ActionResult XemChiTiet(int? MaPN)
         {
-            var px = db.PHIEUNHAPs.SingleOrDefault(n => n.MaPN == MaPN);
-            ViewBag.DS_CTPhieuNhap = px.CT_PHIEUNHAP;
-            return View(px);
+            var pn = db.PHIEUNHAPs.SingleOrDefault(n => n.MaPN == MaPN);
+            ViewBag.DS_CTPhieuNhap = pn.CT_PHIEUNHAP;
+            return View(pn);
         }
     }
 }

@@ -79,13 +79,16 @@ primary key (MaPX,MaSach),
 foreign key (MaPX) references PHIEUXUAT(MaPX),
 foreign key (MaSach) references SACH(MaSach)
 )
+drop table BAOCAODL
 create table BAOCAODL
 (
 	MaBCDL int identity(1,1),
 	MaDL int,
-	ThoiGian datetime,
+	NgayLap datetime,
+	NgayBD datetime,
+	NgayKT datetime,
 	ThanhToan int, 
-	TrangThai bit,
+	TinhTrang bit,
 	primary key (MaBCDL),
 	foreign key (MaDL) references DAILY(MaDL)
 )

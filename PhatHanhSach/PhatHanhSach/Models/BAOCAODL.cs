@@ -22,9 +22,11 @@ namespace PhatHanhSach.Models
     
         public int MaBCDL { get; set; }
         public Nullable<int> MaDL { get; set; }
-        public Nullable<System.DateTime> ThoiGian { get; set; }
+        public Nullable<System.DateTime> NgayLap { get; set; }
+        public Nullable<System.DateTime> NgayBD { get; set; }
+        public Nullable<System.DateTime> NgayKT { get; set; }
         public Nullable<int> ThanhToan { get; set; }
-        public Nullable<bool> TrangThai { get; set; }
+        public Nullable<bool> TinhTrang { get; set; }
     
         public virtual DAILY DAILY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

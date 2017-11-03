@@ -11,10 +11,12 @@ namespace PhatHanhSach.Controllers
     public class QuanLySachController : Controller
     {
         PhatHanhSachEntities db = new PhatHanhSachEntities();
+        
         // GET: QuanLySach
         public ActionResult Index()
         {
             var list = db.SACHes.Where(n => n.TrangThai == true);
+            var ma = db.SACHes.Select(n => n.MaSach).Distinct();
             return View(list);
         }
 
@@ -60,6 +62,8 @@ namespace PhatHanhSach.Controllers
                 return HttpNotFound();
             }
             var sp = db.SACHes.SingleOrDefault(n => n.MaSach == MaSach);
+            
+            
             if (sp == null)
             {
                 return HttpNotFound();
@@ -131,7 +135,6 @@ namespace PhatHanhSach.Controllers
         public ActionResult XoaSach(int MaSach)
         {
             Procedure.XOASACH(db, MaSach);
-            ModelState.AddModelError("", "Xóa thành công");
             return RedirectToAction("Index");
         }
 
