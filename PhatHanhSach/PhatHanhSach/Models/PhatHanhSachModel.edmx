@@ -11,9 +11,11 @@
           </Key>
           <Property Name="MaBCDL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaDL" Type="int" />
-          <Property Name="ThoiGian" Type="datetime" />
+          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="NgayBD" Type="datetime" />
+          <Property Name="NgayKT" Type="datetime" />
           <Property Name="ThanhToan" Type="int" />
-          <Property Name="TrangThai" Type="bit" />
+          <Property Name="TinhTrang" Type="bit" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -179,7 +181,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <Property Name="SLTon" Type="int" />
           <Property Name="TangGiam" Type="int" />
         </EntityType>
-        <Association Name="FK__BAOCAODL__MaDL__36B12243">
+        <Association Name="FK__BAOCAODL__MaDL__531856C7">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +217,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaBCD__398D8EEE">
+        <Association Name="FK__CT_BAOCAO__MaBCD__55F4C372">
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -227,7 +229,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaSac__3A81B327">
+        <Association Name="FK__CT_BAOCAO__MaSac__56E8E7AB">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -395,7 +397,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
     [TONKHO].[TangGiam] AS [TangGiam]
     FROM [dbo].[TONKHO] AS [TONKHO]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
+          <AssociationSet Name="FK__BAOCAODL__MaDL__531856C7" Association="Self.FK__BAOCAODL__MaDL__531856C7">
             <End Role="DAILY" EntitySet="DAILY" />
             <End Role="BAOCAODL" EntitySet="BAOCAODL" />
           </AssociationSet>
@@ -407,11 +409,11 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
             <End Role="CONGNO_NXB" EntitySet="CONGNO_NXB" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__398D8EEE" Association="Self.FK__CT_BAOCAO__MaBCD__398D8EEE">
+          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__55F4C372" Association="Self.FK__CT_BAOCAO__MaBCD__55F4C372">
             <End Role="BAOCAODL" EntitySet="BAOCAODL" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaSac__3A81B327" Association="Self.FK__CT_BAOCAO__MaSac__3A81B327">
+          <AssociationSet Name="FK__CT_BAOCAO__MaSac__56E8E7AB" Association="Self.FK__CT_BAOCAO__MaSac__56E8E7AB">
             <End Role="SACH" EntitySet="SACH" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
@@ -471,11 +473,13 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           </Key>
           <Property Name="MaBCDL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaDL" Type="Int32" />
-          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="NgayBD" Type="DateTime" Precision="3" />
+          <Property Name="NgayKT" Type="DateTime" Precision="3" />
           <Property Name="ThanhToan" Type="Int32" />
-          <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="DAILY" Relationship="Self.FK__BAOCAODL__MaDL__36B12243" FromRole="BAOCAODL" ToRole="DAILY" />
-          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__398D8EEE" FromRole="BAOCAODL" ToRole="CT_BAOCAODL" />
+          <Property Name="TinhTrang" Type="Boolean" />
+          <NavigationProperty Name="DAILY" Relationship="Self.FK__BAOCAODL__MaDL__531856C7" FromRole="BAOCAODL" ToRole="DAILY" />
+          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__55F4C372" FromRole="BAOCAODL" ToRole="CT_BAOCAODL" />
         </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
@@ -519,8 +523,8 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <Property Name="SoLuongBan" Type="Int32" />
           <Property Name="DonGiaBan" Type="Int32" />
           <Property Name="ThanhTien" Type="Int32" />
-          <NavigationProperty Name="BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__398D8EEE" FromRole="CT_BAOCAODL" ToRole="BAOCAODL" />
-          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_BAOCAO__MaSac__3A81B327" FromRole="CT_BAOCAODL" ToRole="SACH" />
+          <NavigationProperty Name="BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaBCD__55F4C372" FromRole="CT_BAOCAODL" ToRole="BAOCAODL" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__CT_BAOCAO__MaSac__56E8E7AB" FromRole="CT_BAOCAODL" ToRole="SACH" />
         </EntityType>
         <EntityType Name="CT_DOANHSO">
           <Key>
@@ -570,7 +574,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="BAOCAODLs" Relationship="Self.FK__BAOCAODL__MaDL__36B12243" FromRole="DAILY" ToRole="BAOCAODL" />
+          <NavigationProperty Name="BAOCAODLs" Relationship="Self.FK__BAOCAODL__MaDL__531856C7" FromRole="DAILY" ToRole="BAOCAODL" />
           <NavigationProperty Name="CONGNO_DL" Relationship="Self.FK__CONGNO_DL__MaDL__49C3F6B7" FromRole="DAILY" ToRole="CONGNO_DL" />
           <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FK__PHIEUXUAT__MaDL__300424B4" FromRole="DAILY" ToRole="PHIEUXUAT" />
         </EntityType>
@@ -652,7 +656,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaSac__3A81B327" FromRole="SACH" ToRole="CT_BAOCAODL" />
+          <NavigationProperty Name="CT_BAOCAODL" Relationship="Self.FK__CT_BAOCAO__MaSac__56E8E7AB" FromRole="SACH" ToRole="CT_BAOCAODL" />
           <NavigationProperty Name="CT_DOANHSO" Relationship="Self.FK__CT_DOANHS__MaSac__412EB0B6" FromRole="SACH" ToRole="CT_DOANHSO" />
           <NavigationProperty Name="CT_PHIEUNHAP" Relationship="Self.FK__CT_PHIEUN__MaSac__5DCAEF64" FromRole="SACH" ToRole="CT_PHIEUNHAP" />
           <NavigationProperty Name="CT_PHIEUXUAT" Relationship="Self.FK__CT_PHIEUX__MaSac__33D4B598" FromRole="SACH" ToRole="CT_PHIEUXUAT" />
@@ -669,7 +673,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <Property Name="TangGiam" Type="Int32" />
           <NavigationProperty Name="SACH" Relationship="Self.FK__TONKHO__MaSach__503BEA1C" FromRole="TONKHO" ToRole="SACH" />
         </EntityType>
-        <Association Name="FK__BAOCAODL__MaDL__36B12243">
+        <Association Name="FK__BAOCAODL__MaDL__531856C7">
           <End Role="DAILY" Type="Self.DAILY" Multiplicity="0..1" />
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -681,7 +685,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaBCD__398D8EEE">
+        <Association Name="FK__CT_BAOCAO__MaBCD__55F4C372">
           <End Role="BAOCAODL" Type="Self.BAOCAODL" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -729,7 +733,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CT_BAOCAO__MaSac__3A81B327">
+        <Association Name="FK__CT_BAOCAO__MaSac__56E8E7AB">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
           <End Role="CT_BAOCAODL" Type="Self.CT_BAOCAODL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -878,11 +882,11 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
           <EntitySet Name="PHIEUXUATs" EntityType="Self.PHIEUXUAT" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
           <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
-          <AssociationSet Name="FK__BAOCAODL__MaDL__36B12243" Association="Self.FK__BAOCAODL__MaDL__36B12243">
+          <AssociationSet Name="FK__BAOCAODL__MaDL__531856C7" Association="Self.FK__BAOCAODL__MaDL__531856C7">
             <End Role="DAILY" EntitySet="DAILies" />
             <End Role="BAOCAODL" EntitySet="BAOCAODLs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__398D8EEE" Association="Self.FK__CT_BAOCAO__MaBCD__398D8EEE">
+          <AssociationSet Name="FK__CT_BAOCAO__MaBCD__55F4C372" Association="Self.FK__CT_BAOCAO__MaBCD__55F4C372">
             <End Role="BAOCAODL" EntitySet="BAOCAODLs" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
@@ -898,7 +902,7 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
             <End Role="NHAXUATBAN" EntitySet="NHAXUATBANs" />
             <End Role="CONGNO_NXB" EntitySet="CONGNO_NXB" />
           </AssociationSet>
-          <AssociationSet Name="FK__CT_BAOCAO__MaSac__3A81B327" Association="Self.FK__CT_BAOCAO__MaSac__3A81B327">
+          <AssociationSet Name="FK__CT_BAOCAO__MaSac__56E8E7AB" Association="Self.FK__CT_BAOCAO__MaSac__56E8E7AB">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="CT_BAOCAODL" EntitySet="CT_BAOCAODL" />
           </AssociationSet>
@@ -954,9 +958,11 @@ warning 6002: The table/view 'PhatHanhSach.dbo.TONKHO' does not have a primary k
               <MappingFragment StoreEntitySet="BAOCAODL">
                 <ScalarProperty Name="MaBCDL" ColumnName="MaBCDL" />
                 <ScalarProperty Name="MaDL" ColumnName="MaDL" />
-                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+                <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
                 <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

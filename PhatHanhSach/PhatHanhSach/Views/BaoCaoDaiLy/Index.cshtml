@@ -1,0 +1,67 @@
+﻿@using PhatHanhSach.Models
+@model IEnumerable<BAOCAODL>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@Html.ActionLink("Thêm Báo cáo", "ThemBaoCao", "BaoCaoDaiLy")
+<br />
+<div class="text-center">
+    <table width="100%" class="table table-bordered">
+        <tr>
+            <th>Mã báo cáo</th>
+            <th>Mã đại lý</th>
+            <th>Ngày lập</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Thanh toán</th>
+            <th>Tình trạng</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (BAOCAODL s in Model)
+        {
+            <tr>
+                <td>@s.MaBCDL</td>
+                <td>@s.DAILY.Ten</td>
+                <td>@s.NgayLap.Value.ToString("dd/MM/yyyy")</td>
+                <td>@s.NgayBD.Value.ToString("dd/MM/yyyy")</td>
+                <td>@s.NgayKT.Value.ToString("dd/MM/yyyy")</td>
+                <td>@s.ThanhToan.Value.ToString("#,##") VNĐ</td>
+                @if (s.TinhTrang == false)
+                {
+                    <td>Chưa thanh toán</td>
+                }
+                else
+                {
+                    <td>Đã thanh toán</td>
+                }
+                <td>@Html.ActionLink("Xem Chi Tiết", "XemChiTiet", new { @MaBCDL = s.MaBCDL })</td>
+                <td>@Html.ActionLink("Cập Nhật Trạng Thái", "CapNhatTrangThai", new { @MaBCDL = s.MaBCDL })</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+

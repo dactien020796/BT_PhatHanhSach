@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaoCaoDaiLyController.cs" />
     <Compile Include="Controllers\QuanLyCongNo_DLController.cs" />
     <Compile Include="Controllers\QuanLyCongNo_NXBController.cs" />
     <Compile Include="Controllers\QuanLyDaiLyController.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLyPhieuXuatController.cs" />
     <Compile Include="Controllers\QuanLySachController.cs" />
+    <Compile Include="Controllers\TonKhoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +230,9 @@
     </Compile>
     <Compile Include="Models\Procedure.cs" />
     <Compile Include="Models\SACH.cs">
+      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TONKHO.cs">
       <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModels\CT_PhieuNhapViewModel.cs" />
@@ -328,7 +333,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -361,6 +368,8 @@
     <Content Include="Views\QuanLyCongNo_NXB\Index.cshtml" />
     <Content Include="Views\QuanLyCongNo_NXB\CongNoNXB.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\XemChitiet.cshtml" />
+    <Content Include="Views\TonKho\Index.cshtml" />
+    <Content Include="Views\BaoCaoDaiLy\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
