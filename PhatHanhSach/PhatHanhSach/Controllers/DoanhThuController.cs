@@ -26,15 +26,17 @@ namespace PhatHanhSach.Controllers
 
             String[] kt = f["DenNgay"].ToString().Split('-');
             DateTime datekt = new DateTime(int.Parse(kt[2]), int.Parse(kt[1]), int.Parse(kt[0]));
-
-            //List<PHIEUXUAT> list = new List<PHIEUXUAT>();
-            //var px = (from s in db.PHIEUXUATs
-            //          where (s.NgayXuat >= datebd && s.NgayXuat <= datekt)
-            //          select 
-            //          ).ToList();
+            
             var px = db.PHIEUXUATs.Where(n => n.NgayXuat >= datebd && n.NgayXuat <= datekt).ToList();
-            //ViewBag.ThongKe = new SelectList(db.PHIEUXUATs.Where(n => n.NgayXuat >= datebd && n.NgayXuat <= datekt).ToList());
+            ViewBag.TuNgay = datebd.ToString("dd/MM/yyyy");
+            ViewBag.DenNgay = datekt.ToString("dd/MM/yyyy");
+            return View(px);
+        }
 
+        public ActionResult XemChiTiet(int? MaPX)
+        {
+            var px = db.PHIEUXUATs.SingleOrDefault(n => n.MaPX == MaPX);
+            ViewBag.DS_CTPhieuXuat = px.CT_PHIEUXUAT;
             return View(px);
         }
     }

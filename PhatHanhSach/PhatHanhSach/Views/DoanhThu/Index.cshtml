@@ -17,8 +17,8 @@
             changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
         });
 
-        $("#btnThongke").click(function () {
-            if ($("#TuNgay").val() == "" || $("#DenNgay").val() == "") {
+        $("#btnThongKe").click(function () {
+            if ($("#TuNgay").datepicker("getDate") == null || $("#DenNgay").datepicker("getDate") == null) {
                 alert("Vui lòng nhập đầy đủ thời gian");
                 return false;
             }

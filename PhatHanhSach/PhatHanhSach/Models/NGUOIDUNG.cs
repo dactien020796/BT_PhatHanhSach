@@ -12,14 +12,16 @@ namespace PhatHanhSach.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TONKHO
+    public partial class NGUOIDUNG
     {
-        public int Id { get; set; }
-        public Nullable<int> MaSach { get; set; }
-        public Nullable<System.DateTime> ThoiGian { get; set; }
-        public Nullable<int> SLTon { get; set; }
-        public Nullable<int> TangGiam { get; set; }
+        public int MaND { get; set; }
+        public string HoTen { get; set; }
+        public string Pass { get; set; }
+        public string Email { get; set; }
+        public string SoDT { get; set; }
+        public Nullable<int> MaCV { get; set; }
+        public Nullable<bool> TrangThai { get; set; }
     
-        public virtual SACH SACH { get; set; }
+        public virtual CHUCVU CHUCVU { get; set; }
     }
 }

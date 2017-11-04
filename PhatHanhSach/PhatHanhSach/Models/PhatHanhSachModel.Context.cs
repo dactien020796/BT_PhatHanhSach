@@ -26,6 +26,7 @@ namespace PhatHanhSach.Models
         }
     
         public virtual DbSet<BAOCAODL> BAOCAODLs { get; set; }
+        public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
         public virtual DbSet<CONGNO_DL> CONGNO_DL { get; set; }
         public virtual DbSet<CONGNO_NXB> CONGNO_NXB { get; set; }
         public virtual DbSet<CT_BAOCAODL> CT_BAOCAODL { get; set; }
@@ -34,6 +35,7 @@ namespace PhatHanhSach.Models
         public virtual DbSet<CT_PHIEUXUAT> CT_PHIEUXUAT { get; set; }
         public virtual DbSet<DAILY> DAILies { get; set; }
         public virtual DbSet<DOANHSO> DOANHSOes { get; set; }
+        public virtual DbSet<NGUOIDUNG> NGUOIDUNGs { get; set; }
         public virtual DbSet<NHAXUATBAN> NHAXUATBANs { get; set; }
         public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
         public virtual DbSet<PHIEUXUAT> PHIEUXUATs { get; set; }

@@ -21,13 +21,12 @@
         $("#TuNgay").datepicker("setDate", '@ViewBag.DatePickerBD');
         $("#DenNgay").datepicker("setDate", '@ViewBag.DatePickerKT');
 
-        $("#btnThongke").click(function () {
-            if ($("#TuNgay").val() == "" || $("#DenNgay").val() == "") {
+        $("#btnThongKe").click(function () {
+            if ($("#TuNgay").datepicker("getDate") == null || $("#DenNgay").datepicker("getDate") == null) {
                 alert("Vui lòng nhập đầy đủ thời gian");
                 return false;
             }
-            if ($("#TuNgay").datepicker("getDate") > $("#DenNgay").datepicker("getDate"))
-            {
+            if ($("#TuNgay").datepicker("getDate") > $("#DenNgay").datepicker("getDate")) {
                 alert("Ngày bắt đầu phải < ngày kết thúc");
                 return false;
             }
@@ -37,7 +36,7 @@
 
 @using (@Html.BeginForm())
 {
-    <h2>Thống kê doanh thu</h2>
+    <h2>Thống kê doanh thu từ ngày @ViewBag.TuNgay đến @ViewBag.DenNgay</h2>
 
     <div class="form-group col-md-12">
         <div class="col-md-2" style="text-align: center">
@@ -76,7 +75,6 @@
                 <td>@s.NgayXuat.Value.ToString("dd/MM/yyyy")</td>
                 <td>@s.DAILY.Ten</td>
                 <td>@s.TongTien.Value.ToString("#,##") VNĐ</td>
-                
                 <td>@Html.ActionLink("Xem Chi Tiết", "XemChiTiet", new { @MaPX = s.MaPX })</td>
             </tr>
             TongThu += s.TongTien;
