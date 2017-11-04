@@ -1,0 +1,212 @@
+﻿@using PhatHanhSach.Models
+@using PhatHanhSach.Models.ViewModels
+@model DAILY
+
+@{
+    ViewBag.Title = "ThemBaoCao";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    int? TongTien = 0;
+}
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript">
+        $(function () {
+            $("#TenSach").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/BaoCaoDaiLy/Search/',
+                        data: "{ 'prefix': '" + request.term + "', 'MaDL': '" + $('#MaDL').val() + "' }",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#MaSach").val(i.item.val);
+                    $("#DonGia").val(i.item.gianhap);
+                },
+                minLength: 1
+            });
+        });
+</script>
+<script>
+    $(document).ready(function () {
+        $(".datepicker").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true, //Tùy chọn này cho phép người dùng chọn tháng
+            changeYear: true //Tùy chọn này cho phép người dùng lựa chọn từ phạm vi năm
+
+        });
+
+        $("#MaDL").val('@ViewBag.NhaXuatBan');
+        $("#NgayLap").datepicker("setDate", '@ViewBag.DatePicker');
+        $("#NgayBD").datepicker("setDate", '@ViewBag.DatePickerBD');
+        $("#NgayKT").datepicker("setDate", '@ViewBag.DatePickerKT');
+        @*$("#datepicker").val('@ViewBag.DatePicker');*@
+
+        $("#btnLuu").click(function () {
+            if ($('#MaDL').val() == "" || $("#NgayLap").datepicker("getDate") == null) {
+                alert("Vui lòng chọn đầy đủ thông tin");
+                return false;
+            }
+
+        });
+
+        $("#btnThemChiTiet").click(function () {
+            if ($("#MaSach").val() == "" || $("#DonGiaBan").val() == "" || $("#SoLuongBan").val() == "" || $('#MaDL').val() == ""
+                || $("#NgayLap").datepicker("getDate") == null || $("#NgayBD").datepicker("getDate") == null || $("#NgayKT").datepicker("getDate") == null) {
+                alert("Vui lòng nhập đầy đủ thông tin sách");
+                return false;
+            }
+            if($("#NgayBD").datepicker("getDate") > $("#NgayKT").datepicker("getDate"))
+            {
+                alert("Ngày bắt đầu phải < ngày kết thúc");
+                return false;
+            }
+
+        });
+    })
+</script>
+
+@using (@Html.BeginForm())
+{
+    <div class="form-group col-md-12">
+        <div class="col-md-2" style="text-align: center">
+            <label class="control-label">Đại Lý</label>
+        </div>
+        <div class="col-md-4">
+            @*@Html.DropDownListFor(m => m.MaDL, ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })*@
+            @Html.DropDownList("MaDL", ViewBag.DS_DL as SelectList, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2" style="text-align: center">
+            <label class="control-label">Ngày lập</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="NgayLap" name="NgayLap" class="form-control datepicker" />
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2" style="text-align: center">
+            <label class="control-label">Ngày bắt đầu</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="NgayBD" name="NgayBD" class="form-control datepicker" />
+        </div>
+    </div>
+
+    <div class="form-group col-md-12">
+        <div class="col-md-2" style="text-align: center">
+            <label class="control-label">Ngày kết thúc</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="NgayKT" name="NgayKT" class="form-control datepicker" />
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div>
+            <label class="control-label col-lg-1">Tên Sách</label>
+            <div class="col-lg-3">
+                <input type="text" id="TenSach" name="TenSach" class="form-control" />
+                <input type="hidden" id="MaSach" name="MaSach" />
+            </div>
+        </div>
+        <div>
+            <label class="control-label col-lg-1">Đơn Giá</label>
+            <div class="col-lg-3">
+                <input type="text" id="DonGia" name="DonGia" class="form-control" readonly />
+            </div>
+        </div>
+        <div>
+            <label class="control-label col-lg-1">Số Lượng Bán</label>
+            <div class="col-lg-3">
+                <input type="number" id="SoLuongBan" name="SoLuongBan" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="text-center" style="float: right">
+        <button id="btnThemChiTiet" formmethod="post" formaction="ThemChiTiet" class="btn btn-primary ">Thêm Sách</button>
+    </div>
+
+    <div style="clear:both">
+        <br />
+    </div>
+
+    <table class="table table-bordered text-center">
+        <tr>
+            <th>Mã Sách</th>
+            <th>Tên Sách</th>
+            <th>Giá Xuất</th>
+            <th>Số Lượng Bán</th>
+            <th>Thành Tiền</th>
+            <th></th>
+        </tr>
+        @if (Session["DS_BaoCao_DaiLy"] != null)
+        {
+            foreach (var s in Session["DS_BaoCao_DaiLy"] as List<CT_BaoCaoDaiLyViewModel>)
+            {
+                <tr>
+                    <td>@s.MaSach</td>
+                    <td>@s.TenSach</td>
+                    <td>@s.DonGiaBan.ToString("#,##")</td>
+                    <td>@s.SoLuongBan</td>
+                    <td>@s.ThanhTien.ToString("#,##")</td>
+                    <td>
+                        @Html.ActionLink("Xóa", "XoaChiTiet", new { @MaSach = s.MaSach }, new { @class = "btnXoa" })
+                    </td>
+                </tr>
+                TongTien += s.ThanhTien;
+            }
+        }
+        
+</table>
+    if (TongTien != 0)
+    {
+        <h2 style="float: right">Tổng tiền: @TongTien.Value.ToString("#,##") VNĐ</h2>
+        <br />
+    }
+
+    <button id="btnLuu" formmethod="post" formaction="ThemBaoCao" class="btn btn-danger" style="float: right; clear:both">Lưu</button>
+}
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+
+
+
+
+
+
+

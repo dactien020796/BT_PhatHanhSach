@@ -1,0 +1,88 @@
+﻿@using PhatHanhSach.Models
+@model BAOCAODL
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    List<CT_BAOCAODL> list = ViewBag.DS_CTBCDL as List<CT_BAOCAODL>;
+}
+
+<div class="form-group col-md-12">
+    <div class="col-md-2" style="text-align: center">
+        <label class="control-label">Đại lý</label>
+    </div>
+    <div class="col-md-4">
+        @*@Html.DropDownListFor(m => m.MaDL, ViewBag.DS_DaiLy as SelectList, new { @class = "form-control" })*@
+        <input type="text" value="@Model.DAILY.Ten" class="form-control" disabled="disabled" />
+    </div>
+</div>
+
+<div class="form-group col-md-12">
+    <div class="col-md-2" style="text-align: center">
+        <label class="control-label">Ngày lập</label>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="NgayLap" name="NgayLap" value="@Model.NgayLap.Value.ToString("dd/MM/yyyy")" class="form-control datepicker" />
+    </div>
+</div>
+
+<div class="form-group col-md-12">
+    <div class="col-md-2" style="text-align: center">
+        <label class="control-label">Ngày bắt đầu</label>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="NgayBD" name="NgayBD" value="@Model.NgayBD.Value.ToString("dd/MM/yyyy")" class="form-control datepicker" />
+    </div>
+</div>
+
+<div class="form-group col-md-12">
+    <div class="col-md-2" style="text-align: center">
+        <label class="control-label">Ngày kết thúc</label>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="NgayKT" name="NgayKT" value="@Model.NgayKT.Value.ToString("dd/MM/yyyy")" class="form-control datepicker" />
+    </div>
+</div>
+
+<table class="table table-bordered text-center">
+    <tr>
+        <th>Mã Sách</th>
+        <th>Tên Sách</th>
+        <th>Giá Xuất</th>
+        <th>Số Lượng Bán</th>
+        <th>Thành Tiền</th>
+    </tr>
+    @foreach (var s in list)
+    {
+        <tr>
+            <td>@s.MaSach</td>
+            <td>@s.SACH.TenSach</td>
+            <td>@s.DonGiaBan.Value.ToString("#,##")</td>
+            <td>@s.SoLuongBan</td>
+            <td>@s.ThanhTien.Value.ToString("#,##")</td>
+        </tr>
+    }
+
+</table>
+<h2 style="float: right">Tổng tiền: @Model.ThanhToan.Value.ToString("#,##") VNĐ</h2>
+<br />
+
+<style>
+    table {
+        width: 100%;
+        border: 1px 1px solid;
+        font-size: 20px;
+    }
+
+        table img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 130px;
+            height: 200px;
+        }
+
+        table th {
+            text-align: center;
+        }
+</style>
+

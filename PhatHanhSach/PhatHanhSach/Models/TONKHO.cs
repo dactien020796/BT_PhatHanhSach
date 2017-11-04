@@ -14,9 +14,8 @@ namespace PhatHanhSach.Models
     
     public partial class TONKHO
     {
-        public int Id { get; set; }
-        public Nullable<int> MaSach { get; set; }
-        public Nullable<System.DateTime> ThoiGian { get; set; }
+        public int MaSach { get; set; }
+        public System.DateTime ThoiGian { get; set; }
         public Nullable<int> SLTon { get; set; }
         public Nullable<int> TangGiam { get; set; }
     
