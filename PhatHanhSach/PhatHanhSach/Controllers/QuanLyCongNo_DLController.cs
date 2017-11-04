@@ -25,6 +25,7 @@ namespace PhatHanhSach.Controllers
             List<CONGNO_DL> lst_congno_dl = new List<CONGNO_DL>();
             List<DAILY> lst_dl = new List<DAILY>();
             lst_dl = db.DAILies.ToList();
+
             foreach (DAILY dl in lst_dl)
             {
                 CONGNO_DL congno_dl = new CONGNO_DL();

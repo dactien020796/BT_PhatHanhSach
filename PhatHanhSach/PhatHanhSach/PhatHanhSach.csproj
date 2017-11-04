@@ -160,6 +160,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaoCaoDaiLyController.cs" />
+    <Compile Include="Controllers\DoanhThuController.cs" />
     <Compile Include="Controllers\QuanLyCongNo_DLController.cs" />
     <Compile Include="Controllers\QuanLyCongNo_NXBController.cs" />
     <Compile Include="Controllers\QuanLyDaiLyController.cs" />
@@ -172,9 +173,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BAOCAODL.cs">
-      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CHUCVU.cs">
       <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CONGNO_DL.cs">
@@ -199,9 +197,6 @@
       <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DOANHSO.cs">
-      <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NGUOIDUNG.cs">
       <DependentUpon>PhatHanhSachModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NHAXUATBAN.cs">
@@ -373,6 +368,9 @@
     <Content Include="Views\BaoCaoDaiLy\Index.cshtml" />
     <Content Include="Views\BaoCaoDaiLy\ThemBaoCao.cshtml" />
     <Content Include="Views\BaoCaoDaiLy\XemChiTiet.cshtml" />
+    <Content Include="Views\DoanhThu\Index.cshtml" />
+    <Content Include="Views\DoanhThu\XemChiTiet.cshtml" />
+    <Content Include="Views\DoanhThu\ThongKe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
